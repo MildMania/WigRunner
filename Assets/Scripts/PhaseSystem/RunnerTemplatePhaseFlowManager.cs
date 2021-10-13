@@ -1,4 +1,4 @@
-﻿public class BeautyFascinatorPhaseFlowManager : PhaseFlowManager
+﻿public class RunnerTemplatePhaseFlowManager : PhaseFlowManager
 {
     protected override PhaseFlowController CreatePhase()
     {

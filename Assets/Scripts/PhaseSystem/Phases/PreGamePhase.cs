@@ -9,5 +9,6 @@ public class PreGamePhase : PhaseActionNode
     protected override void ProcessFlow()
     {
         Debug.Log("Pre Game Phase");
+        TraverseCompleted();
     }
 }

@@ -6,29 +6,16 @@ using MMUtils = MMFramework.Utilities.Utilities;
 
 public class CharacterFSM_RunState : State<EState, ETransition>
 {
-    [SerializeField] private CharacterAnimationController _characterAnimationController = null;
+    // [SerializeField] private CharacterAnimationController _characterAnimationController = null;
 
     [SerializeField] private CharacterInputController _characterInputController = null;
-    
+
     [SerializeField] private CharacterMovementBehaviour _characterMovementBehaviour = null;
 
     [SerializeField] private Transform _characterTransform = null;
 
-    [SerializeField] private Transform _forwardSpeedProviderObj = null;
-    
-    private ISpeedProvider _forwardSpeedProvider;
-    private ISpeedProvider _ForwardSpeedProvider
-    {
-        get
-        {
-            if (_forwardSpeedProvider == null)
-            {
-                _forwardSpeedProvider = _forwardSpeedProviderObj.GetComponent<ISpeedProvider>();
-            }
+    [SerializeField] private float _speed = 2.0f;
 
-            return _forwardSpeedProvider;
-        }
-    }
 
     [SerializeField] private float _sidewaysMoveSpeed = 5f;
 
@@ -43,7 +30,7 @@ public class CharacterFSM_RunState : State<EState, ETransition>
     public Action<Vector3> OnCharacterMoved { get; set; }
 
     #endregion
-    
+
     protected override EState GetStateID()
     {
         return EState.Run;
@@ -51,8 +38,8 @@ public class CharacterFSM_RunState : State<EState, ETransition>
 
     public override void OnEnterCustomActions()
     {
-        _characterAnimationController.PlayAnimation(ECharacterAnimation.Walk);
-        
+        // _characterAnimationController.PlayAnimation(ECharacterAnimation.Walk);
+
         base.OnEnterCustomActions();
     }
 
@@ -75,7 +62,7 @@ public class CharacterFSM_RunState : State<EState, ETransition>
     {
         UnregisterFromPhases();
     }
-    
+
     private void RegisterToPhases()
     {
         PhaseActionNode.OnTraverseStarted_Static += OnPhaseStarted;
@@ -97,7 +84,7 @@ public class CharacterFSM_RunState : State<EState, ETransition>
 
         // FSM.SetTransition(ETransition.Run);
     }
-    
+
     private void OnPhaseFinsihed(PhaseBaseNode phase)
     {
         if (!(phase is GamePhase))
@@ -107,7 +94,7 @@ public class CharacterFSM_RunState : State<EState, ETransition>
     }
 
     #region Sideways Input
-    
+
     private void RegisterToInputController()
     {
         _characterInputController.OnCharacterInputStarted += OnInputStarted;
@@ -126,27 +113,27 @@ public class CharacterFSM_RunState : State<EState, ETransition>
     {
         FSM.SetTransition(ETransition.Run);
     }
-    
+
     private void OnInputPerformed(Vector2 delta)
     {
         if (!FSM.GetCurStateID().Equals(GetStateID()))
         {
             FSM.SetTransition(ETransition.Run);
         }
-        
+
         _curSidewaysMoveSliderVal += delta.x * _sidewaysDeltaMultiplier;
 
-        _curSidewaysMoveSliderVal = Mathf.Clamp(_curSidewaysMoveSliderVal, 
-            LevelBoundsProvider.Instance.GetMinBoundsPos().x, 
-            LevelBoundsProvider.Instance.GetMaxBoundsPos().x);
+        _curSidewaysMoveSliderVal = Mathf.Clamp(_curSidewaysMoveSliderVal,
+            LevelBoundaryProvider.Instance.GetLeftBoundary().x,
+            LevelBoundaryProvider.Instance.GetRightBoundary().x);
     }
-    
+
     private void OnInputCancelled(Vector2 delta)
     {
     }
 
     #endregion
-    
+
     private bool TryMove()
     {
         if (!CanMove())
@@ -156,17 +143,16 @@ public class CharacterFSM_RunState : State<EState, ETransition>
 
         Vector3 sideWayDir = _characterTransform.right * (_curSidewaysMoveSliderVal - _characterTransform.position.x);
 
-        _characterMovementBehaviour.Move(_characterTransform.forward * _ForwardSpeedProvider.CalculateSpeed() +
+        _characterMovementBehaviour.Move(_characterTransform.forward * _speed +
                                          sideWayDir * _sidewaysMoveSpeed + new Vector3(0, _additionalYSpeedAmount, 0));
 
         OnCharacterMoved?.Invoke(_characterTransform.position);
 
         return true;
     }
-    
+
     private bool CanMove()
     {
         return FSM.GetCurStateID().Equals(GetStateID());
     }
-
 }

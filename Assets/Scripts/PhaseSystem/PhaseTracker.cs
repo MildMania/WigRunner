@@ -18,7 +18,7 @@ public class PhaseTracker : MonoBehaviour
     
     #endregion
     
-    public PhaseBaseNode CurPhase { get; private set; }
+    public PhaseBaseNode CurrentPhase { get; private set; }
     
     private void Awake()
     {
@@ -42,6 +42,6 @@ public class PhaseTracker : MonoBehaviour
 
     private void OnPhaseStarted(PhaseBaseNode phase)
     {
-        CurPhase = phase;
+        CurrentPhase = phase;
     }
 }

@@ -12,5 +12,7 @@
     public void CompletePhase()
     {
         TraverseCompleted();
+
+        GameManager.Instance.SceneManager.LoadNextScene();
     }
 }
