@@ -5,5 +5,6 @@ public enum ECameraType
     Game,
     EndGame,
     Win,
-    Fail
+    Fail,
+    MainMenu
 }

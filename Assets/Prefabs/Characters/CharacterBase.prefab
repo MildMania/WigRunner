@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3731696366972183200}
   - component: {fileID: 3731696366972183206}
   - component: {fileID: 3731696366972183207}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3731696367134608664}
   - component: {fileID: 3731696367134608671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3731696367415977133}
   - component: {fileID: 472852149493237410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3731696367431964992}
   - component: {fileID: 3731696367431964999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3731696367528619579}
   - component: {fileID: 3731696367528619578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Run
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _exitImmediately: 1
+  _characterAnimationController: {fileID: 3731696367134608671}
   _characterInputController: {fileID: 3731696368019637642}
   _characterMovementBehaviour: {fileID: 472852149493237410}
   _characterTransform: {fileID: 3731696368115612831}
@@ -252,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3731696367688613394}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +289,7 @@ GameObject:
   - component: {fileID: 3731696367781455056}
   - component: {fileID: 3731696367781455057}
   - component: {fileID: 3731696367781455058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +384,7 @@ GameObject:
   - component: {fileID: 3731696368019637636}
   - component: {fileID: 3731696368019637642}
   - component: {fileID: 3731696368019637643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3731696368034780656}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Behaviours
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +470,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3731696368115612831}
   - component: {fileID: 8319604781738005358}
-  m_Layer: 0
+  - component: {fileID: 5079708636788255718}
+  - component: {fileID: 8469246574771825752}
+  - component: {fileID: 5903601711018933169}
+  m_Layer: 7
   m_Name: CharacterBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,6 +516,48 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5079708636788255718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3731696368115612824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c73cfb4334d4ea59578d00a293ce9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterFSM: {fileID: 3731696366972183206}
+--- !u!54 &8469246574771825752
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3731696368115612824}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5903601711018933169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3731696368115612824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6ddf11e2114044bba397ac1ddfa4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerObjectType: 1
 --- !u!1 &3731696368515831819
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3731696368515831818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3731696368626039486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Controllers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3731696368778684724}
   - component: {fileID: 3731696368778684731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Idle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
