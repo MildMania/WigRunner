@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3201599501835260258}
   m_Layer: 0
-  m_Name: Level01
+  m_Name: LevelBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,14 +226,6 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 1171425685690416203, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1171425685690416203, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
 --- !u!4 &2444123832575066133 stripped
@@ -312,14 +304,6 @@ PrefabInstance:
       propertyPath: _characterFSM
       value: 
       objectReference: {fileID: 2281068658563646899}
-    - target: {fileID: 1910197998481690285, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
-      propertyPath: _successStates.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1910197998481690285, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
-      propertyPath: _successStates.Array.data[0]
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2289664021972906287, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
       propertyPath: m_LocalPosition.z
       value: -10
@@ -431,9 +415,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1434322669872695703, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
   m_PrefabInstance: {fileID: 3201599501770141618}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &754573646431795004 stripped
+--- !u!1 &6506987550104729622 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2744545345968248974, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8512695528779290532, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
   m_PrefabInstance: {fileID: 3201599501770141618}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023324929612902450 stripped
@@ -441,9 +425,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3493129221848915840, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
   m_PrefabInstance: {fileID: 3201599501770141618}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6506987550104729622 stripped
+--- !u!1 &754573646431795004 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8512695528779290532, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2744545345968248974, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
   m_PrefabInstance: {fileID: 3201599501770141618}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3201599502826383125
