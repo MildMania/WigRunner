@@ -15,11 +15,11 @@ public class CheckLevelEndPhase : PhaseConditionalNode
 
         if (ProgressionManager.Instance.ActiveProgression.GetProgressionType().Equals(EProgressionResult.Success))
         {
-            callback?.Invoke(51);
+            callback?.Invoke(41);
 
             return;
         }
 
-        callback?.Invoke(52);
+        callback?.Invoke(42);
     }
 }

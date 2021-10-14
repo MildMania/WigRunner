@@ -7,6 +7,8 @@
         Idle = 1,
         Run = 2,
         Fall = 3,
+        Win = 4,
+        Fail = 5,
     }
 
     public enum ETransition
@@ -15,5 +17,7 @@
         Idle = 1,
         Run = 2,
         Fall = 3,
+        Win = 4,
+        Fail = 5,
     }
 }
