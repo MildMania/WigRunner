@@ -51,8 +51,5 @@ _ReSharper.*/
 ehthumbs.db
 [Tt]humbs.db
 
-Assets/Plugins/Sirenix/Assemblies/Editor/GeneratedOdinEditors.dll
 Recordings/*
-Logs/ApiUpdaterCheck.txt
 *.log
-Packages/packages-lock.json
