@@ -28,6 +28,10 @@ public class CameraTransitionManager : MonoBehaviour
         {
             GameCameraTransition();
         }
+        else if (phase is CheckLevelEndPhase)
+        {
+            LevelEndPhaseCameraTranisiton();
+        }
         else if (phase is LevelWinPhase)
         {
             LevelWinPhaseCameraTransition();
@@ -41,6 +45,11 @@ public class CameraTransitionManager : MonoBehaviour
     private void GameCameraTransition()
     {
         CameraManager.Instance.ActivateCamera(new CameraActivationArgs(ECameraType.Game));
+    }
+
+    private void LevelEndPhaseCameraTranisiton()
+    {
+        CameraManager.Instance.ActivateCamera(new CameraActivationArgs(ECameraType.EndGame));
     }
 
     private void LevelWinPhaseCameraTransition()
