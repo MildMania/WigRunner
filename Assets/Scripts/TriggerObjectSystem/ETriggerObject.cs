@@ -6,4 +6,5 @@ public enum ETriggerObject
     Obstacle = 3,
     FinishLine = 4,
     FallTrigger = 5,
+    Collectible = 6,
 }
