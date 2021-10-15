@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5393227335323081756, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
+      propertyPath: _particleEffectPlayer._particleSystem
+      value: 
+      objectReference: {fileID: 4364548295965673594}
     - target: {fileID: 8305411215872868205, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -242,11 +246,25 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 7766427434272383898, guid: 65eebb06d5209a94792f1e1296a36ee1, type: 2}
+    - target: {fileID: 8369566436886991875, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
+      propertyPath: _particleEffectPlayer._particleSystem
+      value: 
+      objectReference: {fileID: 2378287612105097640}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
 --- !u!4 &2444123832575066133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 974211718755402044, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
+  m_PrefabInstance: {fileID: 3201599501160956201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4364548295965673594 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1224873844327991635, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
+  m_PrefabInstance: {fileID: 3201599501160956201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2378287612105097640 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 967994863359934593, guid: d29b2e28fe6d8734cb8b36db566b974d, type: 3}
   m_PrefabInstance: {fileID: 3201599501160956201}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3201599501770141618
@@ -262,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 220070738054659940, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 344147566235946577, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
       propertyPath: _characterFSM
@@ -342,7 +360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2289664021972906287, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3436295242642597506, guid: f302ce7cd729fb241a2ef321aa4a7fd3, type: 3}
       propertyPath: m_Follow
