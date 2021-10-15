@@ -1,16 +1,16 @@
-using UnityEngine;
+using Cinemachine;
 using DG.Tweening;
+using UnityEngine;
 
 public class VirtualCameraWin : VirtualCameraBase
 {
     [SerializeField] private float _winCameraTravelDuration = 1f;
+    [SerializeField] private CinemachineDollyCart _dollyCart;
 
     protected override void ActivateCustomActions()
     {
-        var dollycart = transform.GetComponentInChildren<Cinemachine.CinemachineDollyCart>();
-
-        DOTween.To(() => dollycart.m_Position,
-                   p => dollycart.m_Position = p,
+        DOTween.To(() => _dollyCart.m_Position,
+                   p => _dollyCart.m_Position = p,
                    1,
                    _winCameraTravelDuration);
 
