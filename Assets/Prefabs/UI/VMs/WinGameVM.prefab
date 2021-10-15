@@ -265,7 +265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 452be6d73b98dfa46b12268332637031, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea8ae047ecb59274a89cb6468f56f038, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -650,6 +650,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -715,6 +727,18 @@ PrefabInstance:
     - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 443126, guid: a49eb9ba2bf624643871149ef7726b93, type: 3}
       propertyPath: m_LocalPosition.x

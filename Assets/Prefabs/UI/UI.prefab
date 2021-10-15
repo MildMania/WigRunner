@@ -286,46 +286,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 974211718755402044}
     m_Modifications:
-    - target: {fileID: 883936604400771091, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 52d4390b26b69474e8260bd9d76594ad, type: 3}
-    - target: {fileID: 1344528191294480695, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ea8ae047ecb59274a89cb6468f56f038, type: 3}
-    - target: {fileID: 1832958249652921054, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: _particleEffectPlayer._particleSystem
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2851273526069603009, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: _particleEffectPlayer._particleSystem
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4848351752831085687, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4848351752832719711, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4848351752832772227, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6834331515767039397, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6834331515767362189, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6834331515767480657, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7526065040089045701, guid: 1d37adffcae9a7244831541ba6a9401d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

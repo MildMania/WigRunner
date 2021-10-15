@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db234a869167b5b418ce3650ba4236fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52d4390b26b69474e8260bd9d76594ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -185,6 +185,7 @@ MonoBehaviour:
   _animateOnAwakeActivation: 0
   _activateSubWidgetsAfterSelf: 0
   _deactivateSubWidgetsAfterSelf: 0
+  _disableCanvasOnDeactivate: 0
   _activationTransitions: []
   _deactivationTransitions: []
   _canvasGroup: {fileID: 2427787913540281284}
