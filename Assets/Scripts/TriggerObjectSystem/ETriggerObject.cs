@@ -5,4 +5,5 @@ public enum ETriggerObject
     Npc = 2,
     Obstacle = 3,
     FinishLine = 4,
+    FallTrigger = 5,
 }
