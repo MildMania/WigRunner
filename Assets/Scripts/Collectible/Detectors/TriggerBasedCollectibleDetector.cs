@@ -18,6 +18,7 @@ public class TriggerBasedCollectibleDetector : BaseCollectibleDetector
     private void OnHitTriggerObject(TriggerObject triggerObject)
     {
         Collectible collectible = triggerObject.GetComponentInParent<Collectible>();
-        OnCollectibleDetected?.Invoke(collectible);
+        LastDetected = collectible;
+        OnDetected?.Invoke(collectible);
     }
 }

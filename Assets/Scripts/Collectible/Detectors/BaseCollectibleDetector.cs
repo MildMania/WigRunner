@@ -1,8 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-public abstract class BaseCollectibleDetector : MonoBehaviour
+﻿public abstract class BaseCollectibleDetector : BaseDetector<Collectible>
 {
-    public Action<Collectible> OnCollectibleDetected;
 }

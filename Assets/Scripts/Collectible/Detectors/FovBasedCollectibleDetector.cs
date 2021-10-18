@@ -33,7 +33,8 @@ public class FovBasedCollectibleDetector : BaseCollectibleDetector
 
     private void OnTargetEnteredFieldOfView(Collectible collectible)
     {
-        OnCollectibleDetected?.Invoke(collectible);
+        LastDetected = collectible;
+        OnDetected?.Invoke(collectible);
     }
 
     private void OnTargetExitedFieldOfView(Collectible collectible)

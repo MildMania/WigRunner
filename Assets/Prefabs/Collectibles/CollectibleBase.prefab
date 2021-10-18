@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onCollectedTasks:
     _taskCarrier: {fileID: 4496485848882065539}
+  Collider: {fileID: 7274315423370704112}
 --- !u!1 &7274315423465482571
 GameObject:
   m_ObjectHideFlags: 0

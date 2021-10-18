@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 public class CollectibleCollector : MonoBehaviour
 {
+    [SerializeField] private BaseCollectCommand _collectCommand;
+    [SerializeField] private Transform _collectibleContainer;
+
     private BaseCollectibleDetector[] _collectibleDetectors;
-
     private List<Collectible> _collectedCollectibles = new List<Collectible>();
-
+    BaseCollectCommand _collectCommandClone;
     public Action<Collectible> OnCollectibleCollected { get; set; }
 
     public BaseCollectibleDetector[] CollectibleDetectors
@@ -28,7 +30,7 @@ public class CollectibleCollector : MonoBehaviour
     {
         foreach (var collectibleDetector in CollectibleDetectors)
         {
-            collectibleDetector.OnCollectibleDetected += OnCollectibleDetected;
+            collectibleDetector.OnDetected += OnDetected;
         }
     }
 
@@ -37,18 +39,36 @@ public class CollectibleCollector : MonoBehaviour
     {
         foreach (var collectibleDetector in CollectibleDetectors)
         {
-            collectibleDetector.OnCollectibleDetected -= OnCollectibleDetected;
+            collectibleDetector.OnDetected -= OnDetected;
+        }
+
+        if (_collectCommandClone != null)
+        {
+            _collectCommandClone.StopExecution();
         }
     }
 
-    private void OnCollectibleDetected(Collectible collectible)
+    private void OnDetected(Collectible collectible)
     {
-        if (!collectible.TryCollect())
+        if (_collectCommand != null)
         {
-            return;
+            CreateCommand();
         }
 
+        collectible.OnCollected += OnCollected;
+        collectible.TryCollect(_collectCommandClone);
+    }
+
+    private void OnCollected(Collectible collectible)
+    {
         _collectedCollectibles.Add(collectible);
         OnCollectibleCollected?.Invoke(collectible);
+    }
+
+    private void CreateCommand()
+    {
+        _collectCommandClone = Instantiate(_collectCommand);
+        _collectCommandClone.CollectibleContainerTransform = _collectibleContainer;
+        _collectCommandClone.CollectedCollectibles = _collectedCollectibles;
     }
 }

@@ -6,21 +6,32 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private MMTaskExecutor _onCollectedTasks;
 
+    public Collider Collider;
     public bool IsCollected { get; private set; }
     public Action<Collectible> OnCollected;
 
 
-    public bool TryCollect()
+    public bool TryCollect(BaseCollectCommand collectCommand = default)
     {
         if (IsCollected)
         {
             return false;
         }
 
-        gameObject.SetActive(false);
         IsCollected = true;
         _onCollectedTasks?.Execute(this);
-        OnCollected?.Invoke(this);
+
+
+        if (collectCommand != null)
+        {
+            collectCommand.OnCollectCommandFinished += () => OnCollected?.Invoke(this);
+            collectCommand.Execute(this);
+        }
+        else
+        {
+            OnCollected?.Invoke(this);
+        }
+
         return true;
     }
 }
