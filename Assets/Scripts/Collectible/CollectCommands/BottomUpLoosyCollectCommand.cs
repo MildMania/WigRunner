@@ -7,10 +7,13 @@ using UnityEngine;
 public class BottomUpLoosyCollectCommand : BaseCollectCommand
 {
     [SerializeField] private float _lerpSpeed = 20f;
+    private Bounds _bounds;
 
     protected override void ExecuteCustomActions(
         Collectible collectible, Action onCollectCommandExecuted)
     {
+        _bounds = collectible.Collider.bounds;
+
         collectible.Collider.enabled = false;
         CoroutineRunner.Instance.StartCoroutine(MoveRoutine(collectible));
         onCollectCommandExecuted?.Invoke();
@@ -18,28 +21,23 @@ public class BottomUpLoosyCollectCommand : BaseCollectCommand
 
     protected override void CalculateNextCollectiblePosition(Collectible collectible)
     {
-        ParentTransform = CollectedCollectibles.Count == 0
-            ? CollectibleContainerTransform
+        TargetTransform = CollectedCollectibles.Count == 0
+            ? TargetTransform
             : CollectedCollectibles[CollectedCollectibles.Count - 1].transform;
-
-
-        var bounds = collectible.Collider.bounds;
-        TargetPosition =
-            CollectibleContainerTransform.position + Vector3.up * CollectedCollectibles.Count * bounds.size.y;
     }
 
     private IEnumerator MoveRoutine(Collectible collectible)
     {
         var collectibleTransform = collectible.transform;
-        collectibleTransform.parent = null;
+        collectibleTransform.parent = ParentTransform;
         while (PhaseTracker.Instance.CurrentPhase is GamePhase)
         {
             var collectiblePosition = collectibleTransform.position;
 
 
-            Vector3 positionDifference = new Vector3(ParentTransform.position.x - collectiblePosition.x,
-                TargetPosition.y - collectiblePosition.y,
-                ParentTransform.position.z - collectiblePosition.z);
+            Vector3 positionDifference = new Vector3(TargetTransform.position.x - collectiblePosition.x,
+                TargetTransform.position.y + _bounds.size.y - collectiblePosition.y,
+                TargetTransform.position.z - collectiblePosition.z);
 
             collectiblePosition += Time.deltaTime * positionDifference * _lerpSpeed;
             collectibleTransform.position = collectiblePosition;

@@ -23,23 +23,22 @@ public class FrontEndLoosyCollectCommand : BaseCollectCommand
 
     protected override void CalculateNextCollectiblePosition(Collectible collectible)
     {
-        ParentTransform = CollectedCollectibles.Count == 0
-            ? CollectibleContainerTransform
+        TargetTransform = CollectedCollectibles.Count == 0
+            ? TargetTransform
             : CollectedCollectibles[CollectedCollectibles.Count - 1].transform;
     }
 
     private IEnumerator MoveRoutine(Collectible collectible)
     {
         var collectibleTransform = collectible.transform;
-        collectibleTransform.parent = null;
-
+        collectibleTransform.parent = ParentTransform;
 
         while (PhaseTracker.Instance.CurrentPhase is GamePhase)
         {
             var collectiblePosition = collectibleTransform.position;
 
             collectibleTransform.position = Vector3.SmoothDamp(collectiblePosition,
-                ParentTransform.position + Vector3.forward * _bounds.size.z,
+                TargetTransform.position + Vector3.forward * _bounds.size.z,
                 ref _velocity, _smoothTime);
 
             yield return null;

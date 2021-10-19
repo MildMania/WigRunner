@@ -7,15 +7,18 @@ public abstract class BaseCollectCommand : ScriptableObject
     public Action OnCollectCommandStarted { get; }
     public Action OnCollectCommandFinished { get; set; }
 
+    public Transform TargetTransform { protected get; set; }
+
     public Transform ParentTransform { protected get; set; }
-    public Vector3 TargetPosition { get; protected set; }
-    public Transform CollectibleContainerTransform { protected get; set; }
+    
+
 
     public List<Collectible> CollectedCollectibles { get; set; }
 
     public void Execute(Collectible collectible)
     {
         CalculateNextCollectiblePosition(collectible);
+        collectible.transform.parent = ParentTransform;
         OnCollectCommandStarted?.Invoke();
         ExecuteCustomActions(collectible, onCollectCommandExecuted);
 

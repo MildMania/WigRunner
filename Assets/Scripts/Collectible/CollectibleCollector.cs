@@ -68,7 +68,8 @@ public class CollectibleCollector : MonoBehaviour
     private void CreateCommand()
     {
         _collectCommandClone = Instantiate(_collectCommand);
-        _collectCommandClone.CollectibleContainerTransform = _collectibleContainer;
+        _collectCommandClone.TargetTransform = transform;
+        _collectCommandClone.ParentTransform = _collectibleContainer;
         _collectCommandClone.CollectedCollectibles = _collectedCollectibles;
     }
 }
