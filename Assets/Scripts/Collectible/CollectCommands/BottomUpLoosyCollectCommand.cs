@@ -34,6 +34,8 @@ public class BottomUpLoosyCollectCommand : BaseCollectCommand
         collectibleTransform.parent = null;
         while (PhaseTracker.Instance.CurrentPhase is GamePhase)
         {
+            if (collectible == null) break;
+
             var collectiblePosition = collectibleTransform.position;
 
 

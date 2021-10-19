@@ -892,6 +892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterFSM: {fileID: 3731696366972183206}
+  _collectibleCollector: {fileID: 6226998162552894032}
+  _obstacleHandler: {fileID: 1602964278325336412}
 --- !u!54 &8469246574771825752
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1253,10 +1255,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 562497648570164713}
     m_Modifications:
     - target: {fileID: 1525264497008007690, guid: 4f777d46fd8d5aa4da5daa9d4fbe4c04, type: 3}
-      propertyPath: _triggerOnce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1525264497008007690, guid: 4f777d46fd8d5aa4da5daa9d4fbe4c04, type: 3}
       propertyPath: _targetTriggerObjectMask.m_Bits
       value: 1024
       objectReference: {fileID: 0}
@@ -1333,10 +1331,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5205077396258396141}
     m_Modifications:
-    - target: {fileID: 1525264497008007690, guid: 4f777d46fd8d5aa4da5daa9d4fbe4c04, type: 3}
-      propertyPath: _triggerOnce
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1525264497008007690, guid: 4f777d46fd8d5aa4da5daa9d4fbe4c04, type: 3}
       propertyPath: _targetTriggerObjectMask.m_Bits
       value: 512
