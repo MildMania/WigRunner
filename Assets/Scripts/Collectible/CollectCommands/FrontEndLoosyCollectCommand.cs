@@ -35,6 +35,8 @@ public class FrontEndLoosyCollectCommand : BaseCollectCommand
 
         while (PhaseTracker.Instance.CurrentPhase is GamePhase)
         {
+            if (collectible == null) break;
+
             var collectiblePosition = collectibleTransform.position;
 
             collectibleTransform.position = Vector3.SmoothDamp(collectiblePosition,

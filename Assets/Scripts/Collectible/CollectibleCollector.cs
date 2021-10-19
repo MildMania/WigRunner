@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CollectibleCollector : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class CollectibleCollector : MonoBehaviour
 
     private BaseCollectibleDetector[] _collectibleDetectors;
     private List<Collectible> _collectedCollectibles = new List<Collectible>();
-    BaseCollectCommand _collectCommandClone;
+    private BaseCollectCommand _collectCommandClone;
     public Action<Collectible> OnCollectibleCollected { get; set; }
 
     public BaseCollectibleDetector[] CollectibleDetectors
@@ -25,7 +25,6 @@ public class CollectibleCollector : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         foreach (var collectibleDetector in CollectibleDetectors)
@@ -33,7 +32,6 @@ public class CollectibleCollector : MonoBehaviour
             collectibleDetector.OnDetected += OnDetected;
         }
     }
-
 
     private void OnDestroy()
     {
@@ -71,5 +69,15 @@ public class CollectibleCollector : MonoBehaviour
         _collectCommandClone.TargetTransform = transform;
         _collectCommandClone.ParentTransform = _collectibleContainer;
         _collectCommandClone.CollectedCollectibles = _collectedCollectibles;
+    }
+
+    public void PopCollectible(Obstacle obstacle)
+    {
+        if (_collectedCollectibles.Count > 0)
+        {
+            var poppedCollectible = _collectedCollectibles[_collectedCollectibles.Count - 1];
+            _collectedCollectibles.Remove(poppedCollectible);
+            Destroy(poppedCollectible.gameObject);
+        }
     }
 }
