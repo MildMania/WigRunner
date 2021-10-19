@@ -2,15 +2,20 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BottomUpLoosyCollectCommand", menuName = "ScriptableObjects/BottomUpLoosyCollectCommand",
+[CreateAssetMenu(fileName = "FrontEndLoosyCollectCommand", menuName = "ScriptableObjects/FrontEndLoosyCollectCommand",
     order = 1)]
-public class BottomUpLoosyCollectCommand : BaseCollectCommand
+public class FrontEndLoosyCollectCommand : BaseCollectCommand
 {
-    [SerializeField] private float _lerpSpeed = 20f;
+    [SerializeField] public float _smoothTime = 0.1f;
+
+    private Bounds _bounds;
+
+    private Vector3 _velocity = Vector3.zero;
 
     protected override void ExecuteCustomActions(
         Collectible collectible, Action onCollectCommandExecuted)
     {
+        _bounds = collectible.Collider.bounds;
         collectible.Collider.enabled = false;
         CoroutineRunner.Instance.StartCoroutine(MoveRoutine(collectible));
         onCollectCommandExecuted?.Invoke();
@@ -21,28 +26,21 @@ public class BottomUpLoosyCollectCommand : BaseCollectCommand
         ParentTransform = CollectedCollectibles.Count == 0
             ? CollectibleContainerTransform
             : CollectedCollectibles[CollectedCollectibles.Count - 1].transform;
-
-
-        var bounds = collectible.Collider.bounds;
-        TargetPosition =
-            CollectibleContainerTransform.position + Vector3.up * CollectedCollectibles.Count * bounds.size.y;
     }
 
     private IEnumerator MoveRoutine(Collectible collectible)
     {
         var collectibleTransform = collectible.transform;
         collectibleTransform.parent = null;
+
+
         while (PhaseTracker.Instance.CurrentPhase is GamePhase)
         {
             var collectiblePosition = collectibleTransform.position;
 
-
-            Vector3 positionDifference = new Vector3(ParentTransform.position.x - collectiblePosition.x,
-                TargetPosition.y - collectiblePosition.y,
-                ParentTransform.position.z - collectiblePosition.z);
-
-            collectiblePosition += Time.deltaTime * positionDifference * _lerpSpeed;
-            collectibleTransform.position = collectiblePosition;
+            collectibleTransform.position = Vector3.SmoothDamp(collectiblePosition,
+                ParentTransform.position + Vector3.forward * _bounds.size.z,
+                ref _velocity, _smoothTime);
 
             yield return null;
         }

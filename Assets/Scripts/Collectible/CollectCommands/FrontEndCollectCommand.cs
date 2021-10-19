@@ -2,8 +2,8 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BottomUpCollectCommand", menuName = "ScriptableObjects/BottomUpCollectCommand", order = 1)]
-public class BottomUpCollectCommand : BaseCollectCommand
+[CreateAssetMenu(fileName = "FrontEndCollectCommand", menuName = "ScriptableObjects/FrontEndCollectCommand", order = 1)]
+public class FrontEndCollectCommand : BaseCollectCommand
 {
     [SerializeField] private float _lerpTime = 0.25f;
 
@@ -24,7 +24,7 @@ public class BottomUpCollectCommand : BaseCollectCommand
 
         var bounds = collectible.Collider.bounds;
         TargetPosition =
-            CollectibleContainerTransform.position + Vector3.up * CollectedCollectibles.Count * bounds.size.y;
+            CollectibleContainerTransform.position + Vector3.forward * CollectedCollectibles.Count * bounds.size.z;
     }
 
 
@@ -44,7 +44,7 @@ public class BottomUpCollectCommand : BaseCollectCommand
             float step = currentTime / _lerpTime;
 
             Vector3 targetPosition =
-                new Vector3(ParentTransform.position.x, TargetPosition.y, CollectibleContainerTransform.position.z);
+                new Vector3(ParentTransform.position.x, ParentTransform.position.y, TargetPosition.z);
             collectibleTransform.position = Vector3.Lerp(position,
                 targetPosition, step);
 
