@@ -17,7 +17,10 @@ public class FrontEndLoosyCollectCommand : BaseCollectCommand
     {
         _bounds = collectible.Collider.bounds;
         collectible.Collider.enabled = false;
-        CoroutineRunner.Instance.StartCoroutine(MoveRoutine(collectible));
+
+        collectible.MoveRoutine = MoveRoutine(collectible);
+        CoroutineRunner.Instance.StartCoroutine(collectible.MoveRoutine);
+
         onCollectCommandExecuted?.Invoke();
     }
 

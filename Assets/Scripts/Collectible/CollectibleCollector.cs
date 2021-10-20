@@ -8,7 +8,7 @@ public class CollectibleCollector : MonoBehaviour
     [SerializeField] private Transform _collectibleContainer;
 
     private BaseCollectibleDetector[] _collectibleDetectors;
-    private List<Collectible> _collectedCollectibles = new List<Collectible>();
+    private List<Collectible> _collectedCollectibles;
     private BaseCollectCommand _collectCommandClone;
     public Action<Collectible> OnCollectibleCollected { get; set; }
 
@@ -27,6 +27,8 @@ public class CollectibleCollector : MonoBehaviour
 
     private void Awake()
     {
+        _collectedCollectibles = Character.Instance.CollectedCollectibles;
+
         foreach (var collectibleDetector in CollectibleDetectors)
         {
             collectibleDetector.OnDetected += OnDetected;
@@ -69,15 +71,5 @@ public class CollectibleCollector : MonoBehaviour
         _collectCommandClone.TargetTransform = transform;
         _collectCommandClone.ParentTransform = _collectibleContainer;
         _collectCommandClone.CollectedCollectibles = _collectedCollectibles;
-    }
-
-    public void PopCollectible(Obstacle obstacle)
-    {
-        if (_collectedCollectibles.Count > 0)
-        {
-            var poppedCollectible = _collectedCollectibles[_collectedCollectibles.Count - 1];
-            _collectedCollectibles.Remove(poppedCollectible);
-            Destroy(poppedCollectible.gameObject);
-        }
     }
 }

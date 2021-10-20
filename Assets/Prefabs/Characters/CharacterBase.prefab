@@ -892,8 +892,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterFSM: {fileID: 3731696366972183206}
-  _collectibleCollector: {fileID: 6226998162552894032}
-  _obstacleHandler: {fileID: 1602964278325336412}
 --- !u!54 &8469246574771825752
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1153,6 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc51b9a676b68c448ccd02de044a089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
 --- !u!1 &7643466380375883318
 GameObject:
   m_ObjectHideFlags: 0

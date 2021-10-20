@@ -1,29 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : Singleton<Character>
 {
     [SerializeField] private CharacterFSM _characterFSM = null;
-    [SerializeField] private CollectibleCollector _collectibleCollector = null;
-    [SerializeField] private ObstacleHandler _obstacleHandler = null;
+
+    private List<Collectible> _collectedCollectibles = new List<Collectible>();
+
     public CharacterFSM CharacterFSM => _characterFSM;
 
-    private void Awake()
-    {
-        RegisterToEvents();
-    }
-
-    private void OnDestroy()
-    {
-        UnregisterFromEvents();
-    }
-
-    private void RegisterToEvents()
-    {
-        _obstacleHandler.OnObstacleCollided += _collectibleCollector.PopCollectible;
-    }
-
-    private void UnregisterFromEvents()
-    {
-        _obstacleHandler.OnObstacleCollided -= _collectibleCollector.PopCollectible;
-    }
+    public List<Collectible> CollectedCollectibles { get => _collectedCollectibles; set => _collectedCollectibles = value; }
 }
