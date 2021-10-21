@@ -17,6 +17,9 @@ public class Collectible : MonoBehaviour
 
     public IEnumerator MoveRoutine;
 
+    private BaseCollectCommand _collectCommand;
+    private BaseUncollectCommand _uncollectCommand;
+
 
     public bool TryCollect(BaseCollectCommand collectCommand = default)
     {
@@ -30,7 +33,8 @@ public class Collectible : MonoBehaviour
 
         if (collectCommand != null)
         {
-            collectCommand.OnCollectCommandFinished += () => OnCollected?.Invoke(this);
+            _collectCommand = collectCommand;
+            collectCommand.OnCollectCommandFinished += OnCollectCommandFinished;
             collectCommand.Execute(this);
         }
         else
@@ -39,6 +43,12 @@ public class Collectible : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void OnCollectCommandFinished()
+    {
+        OnCollected?.Invoke(this);
+        _collectCommand.OnCollectCommandFinished -= OnCollectCommandFinished;
     }
 
     public bool TryUncollect(BaseUncollectCommand uncollectCommand = default)
@@ -53,7 +63,9 @@ public class Collectible : MonoBehaviour
 
         if (uncollectCommand != null)
         {
-            uncollectCommand.OnUncollectCommandFinished += () => OnUncollected?.Invoke(this);
+            _uncollectCommand = uncollectCommand;
+            uncollectCommand.OnUncollectCommandFinished += OnUncollectCommandFinished;
+
             uncollectCommand.Execute(this);
         }
         else
@@ -62,5 +74,17 @@ public class Collectible : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void OnUncollectCommandFinished()
+    {
+        OnUncollected?.Invoke(this);
+        _uncollectCommand.OnUncollectCommandFinished -= OnUncollectCommandFinished;
+    }
+
+
+    public void StopCommandExecution()
+    {
+        _collectCommand.StopExecution();
     }
 }

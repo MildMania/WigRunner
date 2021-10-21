@@ -8,13 +8,8 @@ using Random = UnityEngine.Random;
 public class ThrowUncollectCommand : BaseUncollectCommand
 {
     protected override void ExecuteCustomActions(Collectible collectible,
-        Action onCollectCommandExecuted)
+        Action onUncollectCommandExecuted)
     {
-        if (collectible.MoveRoutine != null)
-        {
-            CoroutineRunner.Instance.StopCoroutine(collectible.MoveRoutine);
-        }
-
         var collectibleGO = collectible.gameObject;
 
         var collectibleCollider = collectibleGO.GetComponent<Collider>();
@@ -31,5 +26,6 @@ public class ThrowUncollectCommand : BaseUncollectCommand
                              Vector3.forward * Random.Range(-1f, 1f);
 
         collectibleRigidbody.AddForce(throwDirection * 300);
+        onUncollectCommandExecuted?.Invoke();
     }
 }

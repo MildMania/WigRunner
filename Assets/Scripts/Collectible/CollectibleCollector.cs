@@ -25,6 +25,7 @@ public class CollectibleCollector : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
         _collectedCollectibles = Character.Instance.CollectedCollectibles;
@@ -42,9 +43,9 @@ public class CollectibleCollector : MonoBehaviour
             collectibleDetector.OnDetected -= OnDetected;
         }
 
-        if (_collectCommandClone != null)
+        foreach (var collectedCollectible in _collectedCollectibles)
         {
-            _collectCommandClone.StopExecution();
+            collectedCollectible.StopCommandExecution();
         }
     }
 
@@ -61,6 +62,7 @@ public class CollectibleCollector : MonoBehaviour
 
     private void OnCollected(Collectible collectible)
     {
+        collectible.OnCollected -= OnCollected;
         _collectedCollectibles.Add(collectible);
         OnCollectibleCollected?.Invoke(collectible);
     }

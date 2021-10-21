@@ -13,6 +13,10 @@ public abstract class BaseUncollectCommand : ScriptableObject
     {
         Collectible = collectible;
         OnUncollectCommandStarted?.Invoke();
+        if (collectible.MoveRoutine != null)
+        {
+            collectible.StopCommandExecution();
+        }
 
         ExecuteCustomActions(collectible,
             () => OnUncollectCommandFinished?.Invoke());
@@ -20,9 +24,12 @@ public abstract class BaseUncollectCommand : ScriptableObject
 
     public virtual void StopExecution()
     {
-        CoroutineRunner.Instance.StopCoroutine(Collectible.MoveRoutine);
+        if (Collectible != null && Collectible.MoveRoutine != null)
+        {
+            CoroutineRunner.Instance.StopCoroutine(Collectible.MoveRoutine);
+        }
     }
 
     protected abstract void ExecuteCustomActions(
-        Collectible collectible, Action onCollectCommandExecuted);
+        Collectible collectible, Action onUncollectCommandExecuted);
 }

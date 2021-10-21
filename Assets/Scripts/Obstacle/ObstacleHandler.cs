@@ -55,12 +55,23 @@ public class ObstacleHandler : MonoBehaviour
             CreateCommand();
         }
 
-        // Temporary
-        RemoveLastCollectible();
+        Collectible collectible = GetLastCollectible();
+        if (collectible != null)
+        {
+            collectible.OnUncollected += OnUncollected;
+            collectible.TryUncollect(_uncollectCommand);
+        }
 
         obstacle.OnCollided += OnCollided;
         obstacle.TryCollide();
     }
+
+    private void OnUncollected(Collectible collectible)
+    {
+        collectible.OnUncollected -= OnUncollected;
+        _collectedCollectibles.Remove(collectible);
+    }
+
 
     private void OnCollided(Obstacle obstacle)
     {
@@ -73,15 +84,14 @@ public class ObstacleHandler : MonoBehaviour
         _uncollectCommandClone.CollectedCollectibles = _collectedCollectibles;
     }
 
-    private void RemoveLastCollectible()
+    private Collectible GetLastCollectible()
     {
+        Collectible collectible = null;
         if (_collectedCollectibles.Count > 0)
         {
-            var removedCollectible = _collectedCollectibles
-                                            [_collectedCollectibles.Count - 1];
-
-            removedCollectible.TryUncollect(_uncollectCommand);
-            _collectedCollectibles.Remove(removedCollectible);
+            collectible = _collectedCollectibles[_collectedCollectibles.Count - 1];
         }
+
+        return collectible;
     }
 }
