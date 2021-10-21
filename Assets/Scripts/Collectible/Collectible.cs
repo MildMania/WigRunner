@@ -17,6 +17,7 @@ public class Collectible : MonoBehaviour
 
     public IEnumerator MoveRoutine;
 
+
     public bool TryCollect(BaseCollectCommand collectCommand = default)
     {
         if (IsCollected)
