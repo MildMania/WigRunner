@@ -10,8 +10,6 @@ public abstract class BaseCollectCommand : ScriptableObject
     public Transform TargetTransform { protected get; set; }
 
     public Transform ParentTransform { protected get; set; }
-    
-
 
     public List<Collectible> CollectedCollectibles { get; set; }
 
@@ -30,8 +28,9 @@ public abstract class BaseCollectCommand : ScriptableObject
 
     public virtual void StopExecution()
     {
+        CollectedCollectibles.ForEach(c =>
+                        CoroutineRunner.Instance.StopCoroutine(c.MoveRoutine));
     }
-
 
     protected abstract void ExecuteCustomActions(
         Collectible collectible, Action onCollectCommandExecuted);

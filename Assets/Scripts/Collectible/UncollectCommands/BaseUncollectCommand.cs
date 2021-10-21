@@ -18,6 +18,8 @@ public abstract class BaseUncollectCommand : ScriptableObject
 
     public virtual void StopExecution()
     {
+        CollectedCollectibles.ForEach(c =>
+                        CoroutineRunner.Instance.StopCoroutine(c.MoveRoutine));
     }
 
     protected abstract void ExecuteCustomActions(

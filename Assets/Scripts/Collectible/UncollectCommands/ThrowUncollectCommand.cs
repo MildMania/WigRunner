@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
     order = 1)]
 public class ThrowUncollectCommand : BaseUncollectCommand
 {
+    [SerializeField] private float _throwForce = 300;
+
     protected override void ExecuteCustomActions(Collectible collectible,
         Action onCollectCommandExecuted)
     {
@@ -30,6 +32,6 @@ public class ThrowUncollectCommand : BaseUncollectCommand
                              Vector3.right * Random.Range(-1f, 1f) +
                              Vector3.forward * Random.Range(-1f, 1f);
 
-        collectibleRigidbody.AddForce(throwDirection * 300);
+        collectibleRigidbody.AddForce(throwDirection * _throwForce);
     }
 }
