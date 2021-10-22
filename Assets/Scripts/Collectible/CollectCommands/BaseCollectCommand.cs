@@ -31,7 +31,10 @@ public abstract class BaseCollectCommand : ScriptableObject
 
     public virtual void StopExecution()
     {
-        CoroutineRunner.Instance.StopCoroutine(Collectible.MoveRoutine);
+        if (Collectible != null && Collectible.MoveRoutine != null)
+        {
+            CoroutineRunner.Instance.StopCoroutine(Collectible.MoveRoutine);
+        }
     }
 
 
