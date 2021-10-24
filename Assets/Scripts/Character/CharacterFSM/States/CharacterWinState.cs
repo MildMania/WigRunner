@@ -7,7 +7,6 @@ public class CharacterWinState : State<EState, ETransition>
 {
     [SerializeField] private TriggerObjectHitController _finishlineHitController;
 
-    [SerializeField] private CharacterAnimationController _characterAnimationController = null;
 
     private void Awake()
     {
@@ -22,16 +21,10 @@ public class CharacterWinState : State<EState, ETransition>
     private void OnHitTriggerObject(TriggerObject obj)
     {
         FSM.SetTransition(ETransition.Win);
-        _characterAnimationController.PlayAnimation(ECharacterAnimation.Idle);
     }
 
     protected override EState GetStateID()
     {
         return EState.Win;
-    }
-
-    public override void OnEnterCustomActions()
-    {
-        base.OnEnterCustomActions();
     }
 }
