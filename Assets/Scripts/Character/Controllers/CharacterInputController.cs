@@ -9,12 +9,12 @@ public class CharacterInputController : MonoBehaviour,
     public Dictionary<Type, InputTransmitter.EventDelegate> Delegates { get; set; }
     public Dictionary<Delegate, InputTransmitter.EventDelegate> DelegateLookUp { get; set; }
 
-    private Vector2 _lastFingerPosition { get; set; } = new Vector2(int.MinValue, int.MinValue);
-    
+    private Vector2 _lastFingerPosition { get; set; } = Vector2.negativeInfinity;
+
     public Action<Vector2> OnCharacterInputStarted { get; set; }
     public Action<Vector2> OnCharacterInputCancelled { get; set; }
     public Action<Vector2> OnCharacterInputPerformed { get; set; }
-    
+
     private void Awake()
     {
         RegisterToPhaseEvents();
@@ -41,7 +41,7 @@ public class CharacterInputController : MonoBehaviour,
     {
         if (!(phase is GamePhase))
             return;
-        
+
         RegisterToInputReceiver();
     }
 
@@ -49,7 +49,7 @@ public class CharacterInputController : MonoBehaviour,
     {
         if (!(phase is GamePhase))
             return;
-        
+
         UnregisterFromInputReceiver();
     }
 
@@ -70,30 +70,30 @@ public class CharacterInputController : MonoBehaviour,
     private void OnFingerDown(Input_WI_OnFingerDown e)
     {
         _lastFingerPosition = e.FingerPos;
-        
+
         OnCharacterInputStarted?.Invoke(Vector2.zero);
     }
 
     private void OnFingerUp(Input_WI_OnFingerUp e)
     {
         _lastFingerPosition = Vector2.zero;
-        
+
         OnCharacterInputCancelled?.Invoke(_lastFingerPosition);
     }
 
     private void OnPress(Input_WI_OnPress e)
     {
-        if (_lastFingerPosition == Vector2.one * int.MinValue)
+        if (_lastFingerPosition == Vector2.negativeInfinity)
         {
             _lastFingerPosition = e.FingerPos;
-            
+
             return;
         }
 
         Vector2 deltaMovement = e.FingerPos - _lastFingerPosition;
 
         float normalized = deltaMovement.x / Screen.width;
-        
+
         OnCharacterInputPerformed?.Invoke(new Vector2(normalized, 0));
 
         _lastFingerPosition = e.FingerPos;

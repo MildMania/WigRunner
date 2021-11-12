@@ -599,10 +599,9 @@ MonoBehaviour:
   _characterInputController: {fileID: 3731696368019637642}
   _characterMovementBehaviour: {fileID: 472852149493237410}
   _characterTransform: {fileID: 3731696368115612831}
-  _speed: 2
-  _sidewaysMoveSpeed: 5
-  _sidewaysDeltaMultiplier: 2
-  _additionalYSpeedAmount: -1
+  _zSpeed: 2
+  _xSpeed: 40
+  _ySpeed: -1
 --- !u!1 &3731696367688613395
 GameObject:
   m_ObjectHideFlags: 0

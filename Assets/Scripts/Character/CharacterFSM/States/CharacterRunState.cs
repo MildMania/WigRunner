@@ -8,23 +8,15 @@ using MMUtils = MMFramework.Utilities.Utilities;
 public class CharacterRunState : State<EState, ETransition>
 {
     [SerializeField] private CharacterAnimationController _characterAnimationController = null;
-
     [SerializeField] private CharacterInputController _characterInputController = null;
-
     [SerializeField] private CharacterMovementBehaviour _characterMovementBehaviour = null;
-
     [SerializeField] private Transform _characterTransform = null;
+    [SerializeField] private float _zSpeed = 2.0f;
+    [SerializeField] private float _xSpeed = 5f;
+    [SerializeField] private float _ySpeed = -1f;
 
-    [SerializeField] private float _speed = 2.0f;
-
-
-    [SerializeField] private float _sidewaysMoveSpeed = 5f;
-
-    [SerializeField] private float _sidewaysDeltaMultiplier = 2f;
-
-    [SerializeField] private float _additionalYSpeedAmount = -1f;
-
-    private float _curSidewaysMoveSliderVal = 0;
+    private float _xSwipeAmount = 0;
+    private float _platformWidth;
 
     #region Events
 
@@ -46,6 +38,8 @@ public class CharacterRunState : State<EState, ETransition>
 
     private void Awake()
     {
+        _platformWidth = Math.Abs(LevelBoundaryProvider.Instance.GetLeftBoundary().x -
+                                  LevelBoundaryProvider.Instance.GetRightBoundary().x);
         SubscribeToEvents();
     }
 
@@ -100,9 +94,9 @@ public class CharacterRunState : State<EState, ETransition>
             FSM.SetTransition(ETransition.Run);
         }
 
-        _curSidewaysMoveSliderVal += delta.x * _sidewaysDeltaMultiplier;
+        _xSwipeAmount += delta.x * _platformWidth;
 
-        _curSidewaysMoveSliderVal = Mathf.Clamp(_curSidewaysMoveSliderVal,
+        _xSwipeAmount = Mathf.Clamp(_xSwipeAmount,
             LevelBoundaryProvider.Instance.GetLeftBoundary().x,
             LevelBoundaryProvider.Instance.GetRightBoundary().x);
     }
@@ -120,12 +114,14 @@ public class CharacterRunState : State<EState, ETransition>
             return false;
         }
 
-        Vector3 sideWayDir = _characterTransform.right * (_curSidewaysMoveSliderVal - _characterTransform.position.x);
+        var characterPosition = _characterTransform.position;
+        Vector3 sideWayDir = _characterTransform.right * (_xSwipeAmount - characterPosition.x);
 
-        _characterMovementBehaviour.Move(_characterTransform.forward * _speed +
-                                         sideWayDir * _sidewaysMoveSpeed + new Vector3(0, _additionalYSpeedAmount, 0));
+        _characterMovementBehaviour.Move(_characterTransform.forward * _zSpeed +
+                                         sideWayDir * _xSpeed +
+                                         new Vector3(0, _ySpeed, 0) * Time.deltaTime);
 
-        OnCharacterMoved?.Invoke(_characterTransform.position);
+        OnCharacterMoved?.Invoke(characterPosition);
 
         return true;
     }
