@@ -6,10 +6,14 @@ public class CollectibleCollector : MonoBehaviour
 {
     [SerializeField] private BaseCollectCommand _collectCommand;
     [SerializeField] private Transform _collectibleContainer;
+    [SerializeField] private CollectibleController _collectibleController;
+    [SerializeField] private Transform[] _leadingTransforms;
+
+    private List<Transform>[] _targetTransforms;
 
     private BaseCollectibleDetector[] _collectibleDetectors;
-    private List<Collectible> _collectedCollectibles;
     private BaseCollectCommand _collectCommandClone;
+
     public Action<Collectible> OnCollectibleCollected { get; set; }
 
     public BaseCollectibleDetector[] CollectibleDetectors
@@ -28,7 +32,15 @@ public class CollectibleCollector : MonoBehaviour
 
     private void Awake()
     {
-        _collectedCollectibles = Character.Instance.CollectedCollectibles;
+        if (_leadingTransforms != null)
+        {
+            _targetTransforms = new List<Transform>[_leadingTransforms.Length];
+            for (int i = 0; i < _targetTransforms.Length; i++)
+            {
+                _targetTransforms[i] = new List<Transform> { _leadingTransforms[i] };
+            }
+        }
+
 
         foreach (var collectibleDetector in CollectibleDetectors)
         {
@@ -43,7 +55,7 @@ public class CollectibleCollector : MonoBehaviour
             collectibleDetector.OnDetected -= OnDetected;
         }
 
-        foreach (var collectedCollectible in _collectedCollectibles)
+        foreach (var collectedCollectible in _collectibleController.CollectedCollectibles)
         {
             collectedCollectible.StopCommandExecution();
         }
@@ -63,7 +75,7 @@ public class CollectibleCollector : MonoBehaviour
     private void OnCollected(Collectible collectible)
     {
         collectible.OnCollected -= OnCollected;
-        _collectedCollectibles.Add(collectible);
+        _collectibleController.CollectedCollectibles.Add(collectible);
         OnCollectibleCollected?.Invoke(collectible);
     }
 
@@ -72,6 +84,7 @@ public class CollectibleCollector : MonoBehaviour
         _collectCommandClone = Instantiate(_collectCommand);
         _collectCommandClone.TargetTransform = transform;
         _collectCommandClone.ParentTransform = _collectibleContainer;
-        _collectCommandClone.CollectedCollectibles = _collectedCollectibles;
+        _collectCommandClone.CollectedCollectibles = _collectibleController.CollectedCollectibles;
+        _collectCommandClone.TargetTransforms = _targetTransforms;
     }
 }

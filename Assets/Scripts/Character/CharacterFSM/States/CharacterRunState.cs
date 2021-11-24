@@ -121,8 +121,6 @@ public class CharacterRunState : State<EState, ETransition>
                                          sideWayDir * _xSpeed +
                                          new Vector3(0, _ySpeed, 0) * Time.deltaTime);
 
-        OnCharacterMoved?.Invoke(characterPosition);
-
         return true;
     }
 
