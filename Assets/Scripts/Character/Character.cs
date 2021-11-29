@@ -9,4 +9,8 @@ public class Character : Singleton<Character>
 
     [SerializeField] private CollectibleController _collectibleController;
     public CollectibleController CollectibleController => _collectibleController;
+
+    [SerializeField] private CharacterVisualController _characterVisualController;
+    public CharacterVisualController CharacterVisualController => _characterVisualController;
+
 }
