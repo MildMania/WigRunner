@@ -7,6 +7,7 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private MMTaskExecutor _onCollectedTasks;
     [SerializeField] private MMTaskExecutor _onUncollectedTasks;
+    [SerializeField] private GameObject _sprinkleParticleCarrier;
 
     public Collider Collider;
     public bool IsCollected { get; private set; }
@@ -47,6 +48,8 @@ public class Collectible : MonoBehaviour
 
     private void OnCollectCommandFinished()
     {
+        gameObject.SetActive(false);
+
         OnCollected?.Invoke(this);
         _collectCommand.OnCollectCommandFinished -= OnCollectCommandFinished;
     }
