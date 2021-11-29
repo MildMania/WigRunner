@@ -5,9 +5,8 @@ public class Character : Singleton<Character>
 {
     [SerializeField] private CharacterFSM _characterFSM = null;
 
-    private List<Collectible> _collectedCollectibles = new List<Collectible>();
-
     public CharacterFSM CharacterFSM => _characterFSM;
 
-    public List<Collectible> CollectedCollectibles { get => _collectedCollectibles; set => _collectedCollectibles = value; }
+    [SerializeField] private CollectibleController _collectibleController;
+    public CollectibleController CollectibleController => _collectibleController;
 }

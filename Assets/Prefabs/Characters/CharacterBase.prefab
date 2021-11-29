@@ -1322,6 +1322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterFSM: {fileID: 3731696366972183206}
+  _collectibleController: {fileID: 5976369755812353134}
 --- !u!54 &8469246574771825752
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1845,6 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
+  _collectibleController: {fileID: 5976369755812353134}
 --- !u!1 &7643466380375883318
 GameObject:
   m_ObjectHideFlags: 0

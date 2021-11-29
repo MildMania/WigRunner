@@ -5,9 +5,9 @@ using UnityEngine;
 public class ObstacleHandler : MonoBehaviour
 {
     [SerializeField] private BaseUncollectCommand _uncollectCommand;
+    [SerializeField] private CollectibleController _collectibleController;
 
     private BaseObstacleDetector[] _obstacleDetectors;
-    private List<Collectible> _collectedCollectibles;
     private BaseUncollectCommand _uncollectCommandClone;
 
     public Action<Obstacle> OnObstacleCollided { get; set; }
@@ -27,7 +27,6 @@ public class ObstacleHandler : MonoBehaviour
 
     private void Awake()
     {
-        _collectedCollectibles = Character.Instance.CollectedCollectibles;
 
         foreach (var obstacleDetector in ObstacleDetectors)
         {
@@ -69,7 +68,7 @@ public class ObstacleHandler : MonoBehaviour
     private void OnUncollected(Collectible collectible)
     {
         collectible.OnUncollected -= OnUncollected;
-        _collectedCollectibles.Remove(collectible);
+        _collectibleController.CollectedCollectibles.Remove(collectible);
     }
 
 
@@ -81,15 +80,14 @@ public class ObstacleHandler : MonoBehaviour
     private void CreateCommand()
     {
         _uncollectCommandClone = Instantiate(_uncollectCommand);
-        _uncollectCommandClone.CollectedCollectibles = _collectedCollectibles;
     }
 
     private Collectible GetLastCollectible()
     {
         Collectible collectible = null;
-        if (_collectedCollectibles.Count > 0)
+        if (_collectibleController.CollectedCollectibles.Count > 0)
         {
-            collectible = _collectedCollectibles[_collectedCollectibles.Count - 1];
+            collectible = _collectibleController.CollectedCollectibles[_collectibleController.CollectedCollectibles.Count - 1];
         }
 
         return collectible;

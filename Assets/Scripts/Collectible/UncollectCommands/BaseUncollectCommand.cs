@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class BaseUncollectCommand : ScriptableObject
 {
-    public List<Collectible> CollectedCollectibles { get; set; }
     public Action OnUncollectCommandStarted { get; }
     public Action OnUncollectCommandFinished { get; set; }
     private Collectible Collectible { get; set; }
