@@ -48,7 +48,7 @@ public class Collectible : MonoBehaviour
 
     private void OnCollectCommandFinished()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
         OnCollected?.Invoke(this);
         _collectCommand.OnCollectCommandFinished -= OnCollectCommandFinished;

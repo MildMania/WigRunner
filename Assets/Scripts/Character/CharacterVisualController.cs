@@ -26,8 +26,11 @@ public class CharacterVisualController : MonoBehaviour
     [SerializeField] private List<Hair> _hairList;
     [SerializeField] private HairType _initialHairType = HairType.Straight;
 
+    [SerializeField] private List<Transform> _attachPoints;
+
     private Dictionary<HairType, GameObject> _hairByHairType = new Dictionary<HairType, GameObject>();
 
+    private int indx = 0;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class CharacterVisualController : MonoBehaviour
         {
             _hairByHairType.Add(item.HairType, item.HairObject);
         }
+
     }
 
     private void Start()
@@ -71,6 +75,14 @@ public class CharacterVisualController : MonoBehaviour
     public void SetHairColor()
     {
 
+    }
+
+    public Transform GetAttachPoint()
+    {
+        var point = _attachPoints[indx];
+
+        indx++;
+        return point;
     }
     
 
