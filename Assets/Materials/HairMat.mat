@@ -121,13 +121,13 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LeftMaskAlpha: 1
+    - _LeftMaskAlpha: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RightMaskAlpha: 1
+    - _RightMaskAlpha: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -142,10 +142,10 @@ Material:
     - _DirtColor: {r: 0.4811321, g: 0.2569278, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LeftColor: {r: 1, g: 0.89543533, b: 0, a: 0}
-    - _LeftColor1: {r: 0, g: 0.24642372, b: 1, a: 0}
+    - _LeftColor1: {r: 0.4627451, g: 0.34337837, b: 0.30588236, a: 0}
     - _LeftColor2: {r: 0, g: 1, b: 0.59961295, a: 0}
     - _RightColor: {r: 1, g: 0, b: 0.82390785, a: 0}
-    - _RightColor1: {r: 1, g: 0.75347275, b: 0, a: 0}
+    - _RightColor1: {r: 0.4627451, g: 0.34509805, b: 0.30588236, a: 0}
     - _RightColor2: {r: 1, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

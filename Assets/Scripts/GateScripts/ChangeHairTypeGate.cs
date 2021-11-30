@@ -9,6 +9,11 @@ public class ChangeHairTypeGate : GateBase
     {
         base.OnEnteredGate();
 
+        if (_isEntered)
+            return;
+
         Character.Instance.CharacterVisualController.SetHairModelActive(_hairType);
+
+        _isEntered = true;
     }
 }

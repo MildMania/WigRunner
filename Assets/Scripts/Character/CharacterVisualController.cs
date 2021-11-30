@@ -1,14 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using MMFramework.Utilities;
+
+using DG.Tweening;
 
 public enum HairType
 {
     Straight,
     Curly,
     Wavy,
-    Dreadlock
+    Dreadlock,
+    PonyTail
 }
 
 
@@ -17,7 +22,12 @@ public class Hair
 {
     public GameObject HairObject;
     public HairType HairType;
+}
 
+public enum HairSide
+{
+    Left,
+    Right
 }
 
 
@@ -26,9 +36,14 @@ public class CharacterVisualController : MonoBehaviour
     [SerializeField] private List<Hair> _hairList;
     [SerializeField] private HairType _initialHairType = HairType.Straight;
 
+    [SerializeField] private Material _hairMaterial;
+    [SerializeField] private Color _initialHairColor;
+
     [SerializeField] private List<Transform> _attachPoints;
 
-    private Dictionary<HairType, GameObject> _hairByHairType = new Dictionary<HairType, GameObject>();
+    private Dictionary<HairType, Hair> _hairByHairType = new Dictionary<HairType, Hair>();
+
+    private HairType _currentHairType;
 
     private int indx = 0;
 
@@ -38,7 +53,7 @@ public class CharacterVisualController : MonoBehaviour
     {
         foreach (var item in _hairList)
         {
-            _hairByHairType.Add(item.HairType, item.HairObject);
+            _hairByHairType.Add(item.HairType, item);
         }
 
     }
@@ -46,21 +61,33 @@ public class CharacterVisualController : MonoBehaviour
     private void Start()
     {
         SetHairModelActive(_initialHairType);
+        _currentHairType = _initialHairType;
+
+        _hairMaterial.SetColor("_LeftColor2", _initialHairColor);
+        _hairMaterial.SetColor("_LeftColor1", _initialHairColor);
+        _hairMaterial.SetFloat("_LeftMaskAlpha", 0);
+
+        _hairMaterial.SetColor("_RightColor2", _initialHairColor);
+        _hairMaterial.SetColor("_RightColor1", _initialHairColor);
+        _hairMaterial.SetFloat("_RightMaskAlpha", 0);
+
     }
 
 
-    public void SetHairModelActive(HairType hair)
+    public void SetHairModelActive(HairType hairType)
     {
-        GameObject hairObj;
+        Hair hair;
 
-        if(_hairByHairType.TryGetValue(hair, out hairObj))
+        if(_hairByHairType.TryGetValue(hairType, out hair))
         {
             foreach (var item in _hairByHairType)
             {
-                item.Value.SetActive(false);
+                item.Value.HairObject.SetActive(false);
             }
 
-            hairObj.SetActive(true);
+            hair.HairObject.SetActive(true);
+
+            _currentHairType = hairType;
         }
     }
 
@@ -74,9 +101,58 @@ public class CharacterVisualController : MonoBehaviour
 
     }
 
-    public void SetHairColor(Color newColor)
+    public IEnumerator StartColorRoutine(Material material, string propertyName, Action onColorRoutineEnded)
     {
+        float val = 0;
 
+        while(val <= 1)
+        {
+            material.SetFloat(propertyName, val);
+
+            val += 0.1f;
+            yield return null;
+        }
+
+        onColorRoutineEnded();
+    }
+
+    public void SetHairColor(Color newColor, HairSide side)
+    {
+        var hair = _hairByHairType[_currentHairType];
+
+        // there is some kind of strange situation about directions in material
+
+        if (side.Equals(HairSide.Right))
+        {
+            // first set color
+
+            _hairMaterial.SetColor("_LeftColor2", newColor);
+
+            StartCoroutine(StartColorRoutine(_hairMaterial, "_LeftMaskAlpha", () => {
+                //-- when tween is finished
+
+                _hairMaterial.SetColor("_LeftColor1", newColor);
+                // set mask alpha 0
+
+                _hairMaterial.SetFloat("_LeftMaskAlpha", 0);
+
+            }));        
+
+        }
+        else
+        {
+            _hairMaterial.SetColor("_RightColor2", newColor);
+
+            StartCoroutine(StartColorRoutine(_hairMaterial, "_RightMaskAlpha", () => {
+                //-- when tween is finished
+
+                _hairMaterial.SetColor("_RightColor1", newColor);
+                // set mask alpha 0
+
+                _hairMaterial.SetFloat("_RightMaskAlpha", 0);
+
+            }));
+        }
     }
 
     public Transform GetAttachPoint()
