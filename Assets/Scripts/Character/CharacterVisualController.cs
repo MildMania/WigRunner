@@ -32,6 +32,8 @@ public class CharacterVisualController : MonoBehaviour
 
     private int indx = 0;
 
+    private Dictionary<GameObject, GameObject> _particleCarriersByGameObject = new Dictionary<GameObject, GameObject>();
+
     private void Awake()
     {
         foreach (var item in _hairList)
@@ -72,7 +74,7 @@ public class CharacterVisualController : MonoBehaviour
 
     }
 
-    public void SetHairColor()
+    public void SetHairColor(Color newColor)
     {
 
     }
@@ -83,6 +85,25 @@ public class CharacterVisualController : MonoBehaviour
 
         indx++;
         return point;
+    }
+
+    public void AddParticle(GameObject adder, GameObject particleCarrier)
+    {
+        _particleCarriersByGameObject.Add(adder, particleCarrier);
+
+        particleCarrier.transform.parent = transform;
+        particleCarrier.transform.localPosition = Vector3.zero;
+        particleCarrier.SetActive(true);
+    }
+
+    public void RemoveParticle(GameObject adder)
+    {
+        var particleCarrier = _particleCarriersByGameObject[adder];
+
+        particleCarrier.transform.parent = null;
+        particleCarrier.SetActive(false);
+
+        _particleCarriersByGameObject.Remove(adder);
     }
     
 

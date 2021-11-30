@@ -18,9 +18,14 @@ public class AttachCollectCommand : BaseCollectCommand
 
     protected override void ExecuteCustomActions(Collectible collectible, Action onCollectCommandExecuted)
     {
+        if (!collectible.CanAttach)
+            return;
+
         var point = Character.Instance.CharacterVisualController.GetAttachPoint();
         collectible.transform.position = point.position;
 
         collectible.transform.parent = point;
+
+        OnCollectCommandFinished?.Invoke();
     }
 }

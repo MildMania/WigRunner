@@ -37,6 +37,6 @@ public class EmitterBase : MonoBehaviour
 
     protected virtual void OnCharacterEntered()
     {
-        print("sa");
+        print("Character Entered");
     }
 }

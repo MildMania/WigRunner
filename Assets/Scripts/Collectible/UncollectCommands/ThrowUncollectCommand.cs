@@ -11,6 +11,7 @@ public class ThrowUncollectCommand : BaseUncollectCommand
         Action onUncollectCommandExecuted)
     {
         var collectibleGO = collectible.gameObject;
+        collectibleGO.transform.parent = null;
 
         var collectibleCollider = collectibleGO.GetComponent<Collider>();
         collectibleCollider.enabled = true;
