@@ -96,6 +96,19 @@ MonoBehaviour:
   _collectibleObject: {fileID: 701439138030276096}
   _particleCarriers:
   - {fileID: 8225769799099266937}
+--- !u!114 &7863487033192610806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894173952749562227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d556d8f78b1ede46963684cf7a524ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 0.2
 --- !u!114 &2619159743790774300
 MonoBehaviour:
   m_ObjectHideFlags: 0

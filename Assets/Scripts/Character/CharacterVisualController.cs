@@ -49,6 +49,10 @@ public class CharacterVisualController : MonoBehaviour
 
     private Dictionary<GameObject, GameObject> _particleCarriersByGameObject = new Dictionary<GameObject, GameObject>();
 
+    private float _currentDirtiness = 0;
+    public float CurrentDirtiness => _currentDirtiness;
+
+
     private void Awake()
     {
         foreach (var item in _hairList)
@@ -71,6 +75,8 @@ public class CharacterVisualController : MonoBehaviour
         _hairMaterial.SetColor("_RightColor1", _initialHairColor);
         _hairMaterial.SetFloat("_RightMaskAlpha", 0);
 
+        _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
+
     }
 
 
@@ -91,9 +97,15 @@ public class CharacterVisualController : MonoBehaviour
         }
     }
 
-    public void SetDirtiness()
+    public void SetDirtiness(float value)
     {
 
+        if (_currentDirtiness + value > 1)
+            _currentDirtiness = 1;
+        else
+            _currentDirtiness = value;
+
+        _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
     }
 
     public void SetGlitter()

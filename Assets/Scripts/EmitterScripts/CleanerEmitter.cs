@@ -27,5 +27,7 @@ public class CleanerEmitter : EmitterBase
                 _uncollectCommandClone.Execute(collectible);
             }
         }
+
+        Character.Instance.CharacterVisualController.SetDirtiness(0);
     }
 }
