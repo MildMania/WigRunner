@@ -23,6 +23,8 @@ public class Hair
     public GameObject HairObject;
     public HairType HairType;
     public Transform AttachPointsRoot;
+
+    public List<Cosmetic> Cosmetics;
 }
 
 public enum HairSide
@@ -52,6 +54,8 @@ public class CharacterVisualController : MonoBehaviour
     public float CurrentDirtiness => _currentDirtiness;
 
     private List<Transform> _currentAttachPoints = new List<Transform>();
+
+    private CosmeticType _currentCosmetic = CosmeticType.None;
 
 
     private void Awake()
@@ -107,6 +111,9 @@ public class CharacterVisualController : MonoBehaviour
             if(collectible.CanAttach)
                 collectible.transform.parent = GetAttachPoint();
         }
+
+        if (_currentCosmetic != CosmeticType.None)
+            EnableCosmetic(_currentCosmetic);
     }
 
     public void SetDirtiness(float value)
@@ -204,6 +211,25 @@ public class CharacterVisualController : MonoBehaviour
         particleCarrier.SetActive(false);
 
         _particleCarriersByGameObject.Remove(adder);
+    }
+
+    public void EnableCosmetic(CosmeticType cosmeticType)
+    {
+        var hair = _hairByHairType[_currentHairType];
+
+        foreach (var cosmetic in hair.Cosmetics)
+        {
+            if(cosmetic.CosmeticType == cosmeticType)
+            {
+                cosmetic.CosmeticObject.SetActive(true);
+            }
+            else
+            {
+                cosmetic.CosmeticObject.SetActive(false);
+            }
+        }
+
+        _currentCosmetic = cosmeticType;
     }
     
 
