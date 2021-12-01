@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4f8ce478e9abc44fa67e3dbebbd02a0
+guid: 6cab03a42ead45e45a7b3c274cf9a498
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,23 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: db79494cdeaad7d44a164889fe537476, type: 2}
+      name: shimmer
+    second: {fileID: 2100000, guid: 9a54d4b87e68c2240954cb7a05992fbe, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: paint
-    second: {fileID: 2100000, guid: 3d963d653b5d5ad498e8d3a2342cfb36, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sprey gri
-    second: {fileID: 2100000, guid: 9767295d4c9205c4aa01a531fe856033, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sprey paint
-    second: {fileID: 2100000, guid: 2083847761029db47a7291b42e724a15, type: 2}
+      name: shimmer box
+    second: {fileID: 2100000, guid: 4e3720edb1491524694adf4851b8bde5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
