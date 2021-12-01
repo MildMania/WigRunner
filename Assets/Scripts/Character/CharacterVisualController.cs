@@ -22,6 +22,7 @@ public class Hair
 {
     public GameObject HairObject;
     public HairType HairType;
+    public Transform AttachPointsRoot;
 }
 
 public enum HairSide
@@ -39,18 +40,18 @@ public class CharacterVisualController : MonoBehaviour
     [SerializeField] private Material _hairMaterial;
     [SerializeField] private Color _initialHairColor;
 
-    [SerializeField] private List<Transform> _attachPoints;
+    [SerializeField] private CollectibleController _collectibleController;
 
     private Dictionary<HairType, Hair> _hairByHairType = new Dictionary<HairType, Hair>();
 
     private HairType _currentHairType;
 
-    private int indx = 0;
-
     private Dictionary<GameObject, GameObject> _particleCarriersByGameObject = new Dictionary<GameObject, GameObject>();
 
     private float _currentDirtiness = 0;
     public float CurrentDirtiness => _currentDirtiness;
+
+    private List<Transform> _currentAttachPoints = new List<Transform>();
 
 
     private void Awake()
@@ -76,7 +77,6 @@ public class CharacterVisualController : MonoBehaviour
         _hairMaterial.SetFloat("_RightMaskAlpha", 0);
 
         _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
-
     }
 
 
@@ -94,6 +94,18 @@ public class CharacterVisualController : MonoBehaviour
             hair.HairObject.SetActive(true);
 
             _currentHairType = hairType;
+        }
+
+        if(_currentAttachPoints.Count != 0)
+            _currentAttachPoints.Clear();
+        _currentAttachPoints = new List<Transform>(hair.AttachPointsRoot.GetComponentsInChildren<Transform>());
+
+        // add previous collectibles
+
+        foreach (var collectible in _collectibleController.CollectedCollectibles)
+        {
+            if(collectible.CanAttach)
+                collectible.transform.parent = GetAttachPoint();
         }
     }
 
@@ -169,9 +181,9 @@ public class CharacterVisualController : MonoBehaviour
 
     public Transform GetAttachPoint()
     {
-        var point = _attachPoints[indx];
+        var point = _currentAttachPoints[_currentAttachPoints.Count - 1];
 
-        indx++;
+        _currentAttachPoints.RemoveAt(_currentAttachPoints.Count - 1);
         return point;
     }
 
