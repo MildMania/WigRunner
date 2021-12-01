@@ -17,7 +17,7 @@ public class CleanerEmitter : EmitterBase
             _uncollectCommandClone = Instantiate(_uncollectCommand);
         }
 
-        var collectibles = Character.Instance.CollectibleController.CollectedCollectibles;
+        List<Collectible> collectibles = new List<Collectible>(Character.Instance.CollectibleController.CollectedCollectibles);
 
         foreach (var collectible in collectibles)
         {

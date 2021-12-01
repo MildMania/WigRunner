@@ -9524,6 +9524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274d6ace51768fb47b85cebbd3f3167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
   _color: {r: 0.6392157, g: 0.18823531, b: 0.3137255, a: 0}
   _hairSide: 1
 --- !u!1001 &5610247487295269805

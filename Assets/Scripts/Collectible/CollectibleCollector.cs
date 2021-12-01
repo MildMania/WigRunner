@@ -75,8 +75,15 @@ public class CollectibleCollector : MonoBehaviour
     private void OnCollected(Collectible collectible)
     {
         collectible.OnCollected -= OnCollected;
+        collectible.OnUncollected += OnUncollected;
         _collectibleController.CollectedCollectibles.Add(collectible);
         OnCollectibleCollected?.Invoke(collectible);
+    }
+
+    private void OnUncollected(Collectible collectible)
+    {
+        collectible.OnUncollected -= OnUncollected;
+        _collectibleController.CollectedCollectibles.Remove(collectible);
     }
 
     private void CreateCommand()

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861da7160bb280a47ab0746619f2449f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
   _hairType: 0
 --- !u!1001 &8304866387908538598
 PrefabInstance:
@@ -90,7 +91,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275127259996535239, guid: ce10efd76293e58418e8107d940eef23, type: 3}
       propertyPath: m_Name
-      value: ChangeHairTypeGate
+      value: ChangeHairTypeGate Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce10efd76293e58418e8107d940eef23, type: 3}

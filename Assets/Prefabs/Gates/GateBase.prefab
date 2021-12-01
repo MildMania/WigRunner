@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3954105772079475654}
   - component: {fileID: 2082984589821501865}
   - component: {fileID: 867753532517051169}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GateBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2563834513602673496}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
