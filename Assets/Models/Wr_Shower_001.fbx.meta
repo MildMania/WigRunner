@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: db79494cdeaad7d44a164889fe537476, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shower_png
+    second: {fileID: 2100000, guid: d86fea4a779a4d14d93e09ba93705c37, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
