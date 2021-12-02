@@ -26403,7 +26403,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _exitImmediately: 1
   _finishlineHitController: {fileID: 4065155693464087629}
-  _characterObject: {fileID: 3731696368115612824}
 --- !u!1 &5111111779260755633
 GameObject:
   m_ObjectHideFlags: 0
