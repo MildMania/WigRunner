@@ -8,7 +8,6 @@ using ETransition = EndGameCharacterFSMController.ETransition;
 public class EndGameCharacterObtainWigState : State<EState, ETransition>
 {
     [SerializeField] private EndGameCharacterAnimationController _animationController;
-    [SerializeField] private Transform _wigAttachPoint;
 
     [SerializeField] private float _stateDuration = 2f;
 
@@ -23,8 +22,10 @@ public class EndGameCharacterObtainWigState : State<EState, ETransition>
         var visualController = Character.Instance.CharacterVisualController;
 
         var hair = visualController.GetHairWithHairType(visualController.CurrentHairType);
-        hair.HairObject.transform.parent = _wigAttachPoint;
-        hair.HairObject.transform.rotation = Quaternion.LookRotation(_wigAttachPoint.transform.forward);
+
+        var pivot = EndGameCharacter.Instance.VisualController.GetHairPivotWithHairType(visualController.CurrentHairType).Pivot;
+
+        hair.HairObject.transform.parent = pivot;
 
         _animationController.PlayAnimation(EEndGameCharacterAnimation.Excited);
 
