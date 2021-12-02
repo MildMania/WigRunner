@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using MMFramework.Utilities;
+using MMFramework.TasksV2;
 
 using DG.Tweening;
 
@@ -43,6 +44,8 @@ public class CharacterVisualController : MonoBehaviour
     [SerializeField] private Color _initialHairColor;
 
     [SerializeField] private CollectibleController _collectibleController;
+
+    [SerializeField] private MMTaskExecutor _onCleanedTasks;
 
     private Dictionary<HairType, Hair> _hairByHairType = new Dictionary<HairType, Hair>();
 
@@ -118,11 +121,10 @@ public class CharacterVisualController : MonoBehaviour
 
     public void SetDirtiness(float value)
     {
+        if (value == 0)
+            _onCleanedTasks.Execute(this);
 
-        if (_currentDirtiness + value > 1)
-            _currentDirtiness = 1;
-        else
-            _currentDirtiness = value;
+         _currentDirtiness = value;
 
         _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
     }
