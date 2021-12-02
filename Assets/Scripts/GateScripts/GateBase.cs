@@ -29,6 +29,7 @@ public class GateBase : MonoBehaviour
         }
 
         Character.Instance.CharacterVisualController.SetDirtiness(0);
+
     }
 
     private void OnTriggerEnter(Collider other)

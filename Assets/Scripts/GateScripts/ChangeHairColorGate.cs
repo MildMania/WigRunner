@@ -9,10 +9,10 @@ public class ChangeHairColorGate : GateBase
 
     public override void OnEnteredGate()
     {
-        base.OnEnteredGate();
-
         if (_isEntered)
             return;
+
+        base.OnEnteredGate();
 
         print("COLOR CHANGE");
 
