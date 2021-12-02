@@ -14,6 +14,7 @@ public class CharacterEndGameState : State<EState, ETransition>
     private void Awake()
     {
         _finishlineHitController.OnHitTriggerObject += OnHitTriggerObject;
+        EndGameCharacter.Instance.FirstWalkState.OnCompleted += OnFirstWalkCompleted;
     }
 
     private void OnDestroy()
@@ -32,10 +33,31 @@ public class CharacterEndGameState : State<EState, ETransition>
         return EState.EndGame;
     }
 
+    private void OnFirstWalkCompleted()
+    {
+        _characterObject.transform.DOMove(EndGameCharacter.Instance.WigAttachPoint.position, 0.3f).SetEase(Ease.Linear).OnComplete(()=> {
+            EndGameCharacter.Instance.FSM.SetTransition(EndGameCharacterFSMController.ETransition.ObtainWig);
+
+
+        });
+        EndGameCharacter.Instance.FirstWalkState.OnCompleted -= OnFirstWalkCompleted;
+    }
+
+    private void OnCameraBlendFinished(ECameraType camType)
+    {
+        if(camType == ECameraType.EndGame)
+        {
+            EndGameCharacter.Instance.FSM.SetTransition(EndGameCharacterFSMController.ETransition.FirstWalk);
+            CameraManager.Instance.OnCameraBlendFinished -= OnCameraBlendFinished;
+        }
+    }
+
     public override void OnEnterCustomActions()
     {
         base.OnEnterCustomActions();
 
-        _characterObject.transform.DOMove(EndGameCharacter.Instance.AttachPoint.position, 0.3f);
+        CameraManager.Instance.OnCameraBlendFinished += OnCameraBlendFinished;
+        CameraManager.Instance.ActivateCamera(new CameraActivationArgs(ECameraType.EndGame));
+
     }
 }

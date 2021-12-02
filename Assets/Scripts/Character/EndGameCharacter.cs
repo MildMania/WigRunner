@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,12 @@ using DG.Tweening;
 
 public class EndGameCharacter : Singleton<EndGameCharacter>
 {
-    public Transform AttachPoint;
+    [SerializeField] private EndGameCharacterFSM _fsm;
+    public EndGameCharacterFSM FSM => _fsm;
 
-    //fsm
+    public Transform WigAttachPoint;
 
-
-    void Start()
-    {
-        
-    }
+    public EndGameCharacterFirstWalkState FirstWalkState;
+    public EndGameCharacterObtainWigState ObtainWigState;
+    public EndGameCharacterPosingState PosingState;
 }

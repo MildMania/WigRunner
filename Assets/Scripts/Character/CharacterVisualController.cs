@@ -50,6 +50,7 @@ public class CharacterVisualController : MonoBehaviour
     private Dictionary<HairType, Hair> _hairByHairType = new Dictionary<HairType, Hair>();
 
     private HairType _currentHairType;
+    public HairType CurrentHairType => _currentHairType;
 
     private Dictionary<GameObject, GameObject> _particleCarriersByGameObject = new Dictionary<GameObject, GameObject>();
 
@@ -232,6 +233,11 @@ public class CharacterVisualController : MonoBehaviour
         }
 
         _currentCosmetic = cosmeticType;
+    }
+
+    public Hair GetHairWithHairType(HairType hairType)
+    {
+        return _hairByHairType[hairType];
     }
     
 
