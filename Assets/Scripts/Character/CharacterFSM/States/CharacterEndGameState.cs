@@ -8,7 +8,6 @@ using DG.Tweening;
 public class CharacterEndGameState : State<EState, ETransition>
 {
     [SerializeField] private TriggerObjectHitController _finishlineHitController;
-    [SerializeField] private GameObject _characterObject;
     
 
     private void Awake()
@@ -35,9 +34,17 @@ public class CharacterEndGameState : State<EState, ETransition>
 
     private void OnFirstWalkCompleted()
     {
-        _characterObject.transform.DOMove(EndGameCharacter.Instance.WigAttachPoint.position, 0.3f).SetEase(Ease.Linear).OnComplete(()=> {
-            EndGameCharacter.Instance.FSM.SetTransition(EndGameCharacterFSMController.ETransition.ObtainWig);
+        var curHairType = Character.Instance.CharacterVisualController.CurrentHairType;
+        var hair = Character.Instance.CharacterVisualController.GetHairWithHairType(curHairType);
 
+        var pivot = EndGameCharacter.Instance.VisualController.GetHairPivotWithHairType(curHairType).Pivot;
+
+        Vector3 attachPos = pivot.position;
+
+        hair.HairObject.transform.DOMove(attachPos, 0.3f).SetEase(Ease.Linear).OnComplete(()=> {
+
+            hair.HairObject.transform.rotation = Quaternion.LookRotation(pivot.forward);
+            EndGameCharacter.Instance.FSM.SetTransition(EndGameCharacterFSMController.ETransition.ObtainWig);
 
         });
         EndGameCharacter.Instance.FirstWalkState.OnCompleted -= OnFirstWalkCompleted;

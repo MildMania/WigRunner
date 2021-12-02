@@ -10,9 +10,9 @@ public class EndGameCharacter : Singleton<EndGameCharacter>
     [SerializeField] private EndGameCharacterFSM _fsm;
     public EndGameCharacterFSM FSM => _fsm;
 
-    public Transform WigAttachPoint;
-
     public EndGameCharacterFirstWalkState FirstWalkState;
     public EndGameCharacterObtainWigState ObtainWigState;
     public EndGameCharacterPosingState PosingState;
+
+    public EndGameCharacterVisualController VisualController;
 }
