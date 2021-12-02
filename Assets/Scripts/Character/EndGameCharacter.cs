@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class EndGameCharacter : Singleton<EndGameCharacter>
 {
-    [SerializeField] private Transform _attachPoint;
+    public Transform AttachPoint;
 
     //fsm
 

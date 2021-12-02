@@ -9,6 +9,7 @@
         Fall = 3,
         Win = 4,
         Fail = 5,
+        EndGame = 6
     }
 
     public enum ETransition
@@ -19,5 +20,6 @@
         Fall = 3,
         Win = 4,
         Fail = 5,
+        EndGame = 6
     }
 }
