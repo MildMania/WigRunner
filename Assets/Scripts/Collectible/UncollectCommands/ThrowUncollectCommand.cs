@@ -15,7 +15,7 @@ public class ThrowUncollectCommand : BaseUncollectCommand
 
         var collectibleCollider = collectibleGO.GetComponent<Collider>();
         collectibleCollider.enabled = true;
-        collectibleCollider.isTrigger = false;
+        collectibleCollider.isTrigger = true;
 
         var collectibleRigidbody = collectibleGO.GetComponent<Rigidbody>();
         collectibleRigidbody.isKinematic = false;
