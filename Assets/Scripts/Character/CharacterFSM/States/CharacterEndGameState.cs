@@ -8,7 +8,6 @@ using DG.Tweening;
 public class CharacterEndGameState : State<EState, ETransition>
 {
     [SerializeField] private TriggerObjectHitController _finishlineHitController;
-    
 
     private void Awake()
     {
@@ -41,12 +40,22 @@ public class CharacterEndGameState : State<EState, ETransition>
 
         Vector3 attachPos = pivot.position;
 
-        hair.HairObject.transform.DOMove(attachPos, 0.3f).SetEase(Ease.Linear).OnComplete(()=> {
+        var seq = DOTween.Sequence();
 
-            hair.HairObject.transform.rotation = Quaternion.LookRotation(pivot.forward);
+        seq.Append(hair.HairObject.transform.DOMove(attachPos, 0.8f).SetEase(Ease.InCirc).OnComplete(() => {
+
+            var vcam = CameraManager.Instance.GetCamera(ECameraType.EndGame);
+
+            //hair.HairObject.transform.DORotateQuaternion(Quaternion.LookRotation(pivot.forward), 0.1f);
+            hair.HairModel.transform.rotation = Quaternion.LookRotation(pivot.forward);
+
             EndGameCharacter.Instance.FSM.SetTransition(EndGameCharacterFSMController.ETransition.ObtainWig);
 
-        });
+        }));
+
+        seq.Join((hair.HairModel.transform.DOLocalMoveY(0.2f, 0.4f)).SetEase(Ease.OutCirc).OnComplete(()=> {
+            hair.HairModel.transform.DOLocalMoveY(0, 0.4f).SetEase(Ease.InCirc);
+        }));
         EndGameCharacter.Instance.FirstWalkState.OnCompleted -= OnFirstWalkCompleted;
     }
 
@@ -54,6 +63,7 @@ public class CharacterEndGameState : State<EState, ETransition>
     {
         if(camType == ECameraType.EndGame)
         {
+
             EndGameCharacter.Instance.FSM.SetTransition(EndGameCharacterFSMController.ETransition.FirstWalk);
             CameraManager.Instance.OnCameraBlendFinished -= OnCameraBlendFinished;
         }
@@ -62,6 +72,14 @@ public class CharacterEndGameState : State<EState, ETransition>
     public override void OnEnterCustomActions()
     {
         base.OnEnterCustomActions();
+
+        var vcam = CameraManager.Instance.GetCamera(ECameraType.EndGame);
+
+        var curHairType = Character.Instance.CharacterVisualController.CurrentHairType;
+        var hair = Character.Instance.CharacterVisualController.GetHairWithHairType(curHairType);
+
+        vcam.VirtualCamera.m_Follow = hair.HairObject.transform;
+        vcam.VirtualCamera.m_LookAt = hair.HairObject.transform;
 
         CameraManager.Instance.OnCameraBlendFinished += OnCameraBlendFinished;
         CameraManager.Instance.ActivateCamera(new CameraActivationArgs(ECameraType.EndGame));

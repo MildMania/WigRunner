@@ -1,10 +1,14 @@
 using UnityEngine;
 
+using DG.Tweening;
+
 using EState = EndGameCharacterFSMController.EState;
 using ETransition = EndGameCharacterFSMController.ETransition;
 
 public class EndGameCharacterPosingState : State<EState, ETransition>
 {
+    [SerializeField] private GameObject _endGameCharacterObject;
+
     [SerializeField] private EndGameCharacterAnimationController _animationController;
 
     protected override EState GetStateID()
@@ -17,6 +21,8 @@ public class EndGameCharacterPosingState : State<EState, ETransition>
         base.OnEnterCustomActions();
 
         _animationController.PlayAnimation(EEndGameCharacterAnimation.Posing);
+
+        _endGameCharacterObject.transform.DORotate(new Vector3(0, 180, 0), 0.3f, RotateMode.WorldAxisAdd);
 
         Character.Instance.CharacterFSM.SetTransition(CharacterFSMController.ETransition.Win);
     }

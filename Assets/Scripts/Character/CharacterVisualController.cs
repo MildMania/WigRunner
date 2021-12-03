@@ -22,6 +22,7 @@ public enum HairType
 public class Hair
 {
     public GameObject HairObject;
+    public GameObject HairModel;
     public HairType HairType;
     public Transform AttachPointsRoot;
 
