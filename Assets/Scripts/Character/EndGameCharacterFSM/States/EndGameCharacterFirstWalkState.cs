@@ -23,14 +23,16 @@ public class EndGameCharacterFirstWalkState : State<EState, ETransition>
     {
         base.OnEnterCustomActions();
 
-        _animationController.PlayAnimation(EEndGameCharacterAnimation.Walk);
+        //_animationController.PlayAnimation(EEndGameCharacterAnimation.Walk);
 
-        var pos = new Vector3(_firstWalkTarget.position.x, _endGameCharacterObject.transform.position.y, _firstWalkTarget.position.z);
+        //var pos = new Vector3(_firstWalkTarget.position.x, _endGameCharacterObject.transform.position.y, _firstWalkTarget.position.z);
 
-        _endGameCharacterObject.transform.DOMove(pos, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            _animationController.PlayAnimation(EEndGameCharacterAnimation.Idle);
-            OnCompleted?.Invoke();
-        });
+        //_endGameCharacterObject.transform.DOMove(pos, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        //{
+        //    _animationController.PlayAnimation(EEndGameCharacterAnimation.Idle);
+        //    OnCompleted?.Invoke();
+        //});
+
+        OnCompleted?.Invoke();
     }
 }

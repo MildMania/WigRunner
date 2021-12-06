@@ -4,5 +4,6 @@ public enum EEndGameCharacterAnimation
     Idle = 1,
     Walk = 2,
     Excited = 3,
-    Posing = 4
+    Posing = 4,
+    Sit = 5
 }
