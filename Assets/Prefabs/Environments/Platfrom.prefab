@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 1107896881782513860}
   - component: {fileID: 4093721266050559841}
   - component: {fileID: 2245931190680230827}
+  - component: {fileID: 8161286633457329535}
   m_Layer: 0
   m_Name: Platfrom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1107896881782513860
 Transform:
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8161286633457329535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300574544020159102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9271977, y: 0.42831764, z: 26.703442}
+  m_Center: {x: 0, y: -0.2141619, z: 0}
