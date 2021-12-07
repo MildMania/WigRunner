@@ -13,4 +13,5 @@ public class Character : Singleton<Character>
     [SerializeField] private CharacterVisualController _characterVisualController;
     public CharacterVisualController CharacterVisualController => _characterVisualController;
 
+
 }

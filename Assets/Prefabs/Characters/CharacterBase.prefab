@@ -5931,6 +5931,7 @@ MonoBehaviour:
   _collectibleController: {fileID: 5976369755812353134}
   _onCleanedTasks:
     _taskCarrier: {fileID: 1015049977953798211}
+  _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
 --- !u!114 &8397780386862842318
 MonoBehaviour:
   m_ObjectHideFlags: 0

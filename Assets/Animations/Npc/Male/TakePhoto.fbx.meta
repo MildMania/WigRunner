@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 02dfaf36b198e1c4a8710c5a8c4a7f96
+guid: 7a114527e74f5a6489a2f4be0c81ddc9
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -203655887218126122
-    second: mixamo.com
+      74: -1722932202432558496
+    second: TakePhoto
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
-      takeName: mixamo.com
+      name: TakePhoto
+      takeName: Photographer_Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 143
+      lastFrame: 135
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
