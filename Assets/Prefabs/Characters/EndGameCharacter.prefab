@@ -19851,7 +19851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6725950234481498511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.044, y: -2.112, z: 0.077}
+  m_LocalPosition: {x: 0.037, y: -2.112, z: -0.011}
   m_LocalScale: {x: 5.146442, y: 5.146442, z: 5.146442}
   m_Children: []
   m_Father: {fileID: 2499784135646605083}
@@ -20046,7 +20046,7 @@ MonoBehaviour:
   _exitImmediately: 1
   _endGameCharacterObject: {fileID: 6255228373697635276}
   _animationController: {fileID: 8279387746277152963}
-  _rotateDuration: 4
+  _rotateDuration: 6
 --- !u!1 &8178942889941191430
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,6 +41,7 @@ public class EndGameCharacterObtainWigState : State<EState, ETransition>
         var pivot = EndGameCharacter.Instance.VisualController.GetHairPivotWithHairType(visualController.CurrentHairType).Pivot;
 
         hair.HairObject.transform.parent = pivot;
+        hair.HairObject.transform.localPosition = Vector3.zero;
 
         var dynamicBones = hair.HairObject.GetComponentsInChildren<DynamicBone>();
         foreach (var dynamicBone in dynamicBones)

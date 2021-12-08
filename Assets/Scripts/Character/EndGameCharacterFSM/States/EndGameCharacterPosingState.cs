@@ -23,7 +23,7 @@ public class EndGameCharacterPosingState : State<EState, ETransition>
 
         _animationController.PlayAnimation(EEndGameCharacterAnimation.Posing);
 
-        _endGameCharacterObject.transform.DORotate(new Vector3(0, 180, 0), _rotateDuration, RotateMode.WorldAxisAdd);
+        _endGameCharacterObject.transform.DORotate(new Vector3(0, 540, 0), _rotateDuration, RotateMode.WorldAxisAdd);
 
         Character.Instance.CharacterFSM.SetTransition(CharacterFSMController.ETransition.Win);
     }
