@@ -10,6 +10,7 @@ public class EndGameCharacterPosingState : State<EState, ETransition>
     [SerializeField] private GameObject _endGameCharacterObject;
 
     [SerializeField] private EndGameCharacterAnimationController _animationController;
+    [SerializeField] private float _rotateDuration = 2f;
 
     protected override EState GetStateID()
     {
@@ -22,7 +23,7 @@ public class EndGameCharacterPosingState : State<EState, ETransition>
 
         _animationController.PlayAnimation(EEndGameCharacterAnimation.Posing);
 
-        _endGameCharacterObject.transform.DORotate(new Vector3(0, 180, 0), 0.3f, RotateMode.WorldAxisAdd);
+        _endGameCharacterObject.transform.DORotate(new Vector3(0, 180, 0), _rotateDuration, RotateMode.WorldAxisAdd);
 
         Character.Instance.CharacterFSM.SetTransition(CharacterFSMController.ETransition.Win);
     }
