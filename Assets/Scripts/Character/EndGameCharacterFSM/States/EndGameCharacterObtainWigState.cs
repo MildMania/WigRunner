@@ -1,18 +1,25 @@
+using System;
+
 using UnityEngine;
 
 using MMFramework.Utilities;
 using MMFramework.TasksV2;
+
+using DG.Tweening;
 
 using EState = EndGameCharacterFSMController.EState;
 using ETransition = EndGameCharacterFSMController.ETransition;
 
 public class EndGameCharacterObtainWigState : State<EState, ETransition>
 {
+    [SerializeField] private GameObject _endGameCharacterModel;
     [SerializeField] private EndGameCharacterAnimationController _animationController;
 
     [SerializeField] private float _stateDuration = 2f;
 
     [SerializeField] private MMTaskExecutor _onObtainedTasks;
+
+    public Action<float> OnWigObtained;
 
     protected override EState GetStateID()
     {
@@ -41,7 +48,15 @@ public class EndGameCharacterObtainWigState : State<EState, ETransition>
             dynamicBone.SetWeight(0);
         }
 
-        _animationController.PlayAnimation(EEndGameCharacterAnimation.Excited);
+
+        CoroutineRunner.Instance.WaitForSeconds(0.1f, () =>
+        {
+            OnWigObtained?.Invoke(1f);
+            _endGameCharacterModel.transform.DORotateQuaternion(Quaternion.LookRotation(Vector3.forward), 1f).OnComplete(()=> {
+                _animationController.PlayAnimation(EEndGameCharacterAnimation.Excited);
+            });
+
+        });
 
         CoroutineRunner.Instance.WaitForSeconds(_stateDuration, () =>
         {

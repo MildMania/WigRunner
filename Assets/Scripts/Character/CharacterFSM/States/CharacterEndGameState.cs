@@ -46,6 +46,9 @@ public class CharacterEndGameState : State<EState, ETransition>
 
             var vcam = CameraManager.Instance.GetCamera(ECameraType.EndGame);
 
+            vcam.VirtualCamera.m_Follow = null;
+            vcam.VirtualCamera.m_LookAt = null;
+
             //hair.HairObject.transform.DORotateQuaternion(Quaternion.LookRotation(pivot.forward), 0.1f);
             hair.HairModel.transform.rotation = Quaternion.LookRotation(pivot.forward);
 
