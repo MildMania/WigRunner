@@ -48,6 +48,8 @@ public class CharacterVisualController : MonoBehaviour
 
     [SerializeField] private MMTaskExecutor _onCleanedTasks;
 
+    [SerializeField] private BaseUncollectCommand _uncollectCommand;
+
     private Dictionary<HairType, Hair> _hairByHairType = new Dictionary<HairType, Hair>();
 
     private HairType _currentHairType;
@@ -61,6 +63,8 @@ public class CharacterVisualController : MonoBehaviour
     private List<Transform> _currentAttachPoints = new List<Transform>();
 
     private CosmeticType _currentCosmetic = CosmeticType.None;
+
+    private BaseUncollectCommand _uncollectCommandClone;
 
 
     private void Awake()
@@ -121,10 +125,35 @@ public class CharacterVisualController : MonoBehaviour
             EnableCosmetic(_currentCosmetic);
     }
 
+    private void Clean()
+    {
+        if (_uncollectCommandClone == null)
+        {
+            _uncollectCommandClone = Instantiate(_uncollectCommand);
+        }
+
+        List<Collectible> collectibles = new List<Collectible>(Character.Instance.CollectibleController.CollectedCollectibles);
+
+        foreach (var collectible in collectibles)
+        {
+            if (collectible.IsDirtyCollectible)
+            {
+                collectible.TryUncollect();
+                _uncollectCommandClone.Execute(collectible);
+            }
+        }
+
+    }
+
+
+
     public void SetDirtiness(float value)
     {
         if (value == 0)
+        {
             _onCleanedTasks.Execute(this);
+            Clean();
+        }
 
          _currentDirtiness = value;
 

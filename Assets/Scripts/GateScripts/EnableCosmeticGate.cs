@@ -21,11 +21,16 @@ public class EnableCosmeticGate : GateBase
 {
     [SerializeField] CosmeticType _cosmeticType;
 
-
     public override void OnEnteredGate()
     {
+        if (_isEntered)
+            return;
+
         base.OnEnteredGate();
 
+        Character.Instance.CharacterVisualController.SetDirtiness(0);
         Character.Instance.CharacterVisualController.EnableCosmetic(_cosmeticType);
+
+        _isEntered = true;
     }
 }

@@ -11,11 +11,12 @@ public class ChangeHairColorGate : GateBase
     {
         if (_isEntered)
             return;
-
+        
         base.OnEnteredGate();
 
         print("COLOR CHANGE");
 
+        Character.Instance.CharacterVisualController.SetDirtiness(0);
         Character.Instance.CharacterVisualController.SetHairColor(_color, _hairSide);
 
         _isEntered = true;
