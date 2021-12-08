@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100695713579199246}
   m_Layer: 7
-  m_Name: DreadlockPivot
+  m_Name: Straight_2_HairPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600668067207965811}
   m_LocalRotation: {x: -0.0000000055879354, y: 4.7030234e-11, z: 3.524502e-12, w: 1}
-  m_LocalPosition: {x: 0, y: -0.317, z: -0.015}
+  m_LocalPosition: {x: 0, y: -0.586, z: -0.048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2499784135646605083}
@@ -14902,8 +14902,12 @@ MonoBehaviour:
   _hairPivots:
   - HairType: 0
     Pivot: {fileID: 5864994485164202231}
-  - HairType: 3
+  - HairType: 1
     Pivot: {fileID: 100695713579199246}
+  - HairType: 2
+    Pivot: {fileID: 5794982870074906084}
+  - HairType: 4
+    Pivot: {fileID: 5011806189806220564}
 --- !u!95 &1719334841923551620
 Animator:
   serializedVersion: 3
@@ -14923,6 +14927,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &6256746387733726606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5794982870074906084}
+  m_Layer: 7
+  m_Name: Straight_3_HairPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5794982870074906084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256746387733726606}
+  m_LocalRotation: {x: -0.0000000055879354, y: 4.7030234e-11, z: 3.524502e-12, w: 1}
+  m_LocalPosition: {x: 0.026, y: -1.241, z: 0.113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2499784135646605083}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6428059004545834807
 GameObject:
   m_ObjectHideFlags: 0
@@ -19827,6 +19861,36 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &6704060977716858033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5011806189806220564}
+  m_Layer: 7
+  m_Name: WavyHairPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5011806189806220564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704060977716858033}
+  m_LocalRotation: {x: -0.0000000055879354, y: 4.7030234e-11, z: 3.524502e-12, w: 1}
+  m_LocalPosition: {x: 0.004, y: -0.518, z: -0.071}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2499784135646605083}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6725950234481498511
 GameObject:
   m_ObjectHideFlags: 0
@@ -19851,7 +19915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6725950234481498511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.037, y: -2.112, z: -0.011}
+  m_LocalPosition: {x: 0.015, y: -0.609, z: -0.062}
   m_LocalScale: {x: 5.146442, y: 5.146442, z: 5.146442}
   m_Children: []
   m_Father: {fileID: 2499784135646605083}

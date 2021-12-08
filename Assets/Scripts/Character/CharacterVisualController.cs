@@ -11,6 +11,8 @@ using DG.Tweening;
 public enum HairType
 {
     Straight,
+    Straight_2,
+    Straight_3,
     Curly,
     Wavy,
     Dreadlock,
