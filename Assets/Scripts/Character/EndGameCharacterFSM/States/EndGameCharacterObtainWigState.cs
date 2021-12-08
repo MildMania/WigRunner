@@ -54,14 +54,14 @@ public class EndGameCharacterObtainWigState : State<EState, ETransition>
         {
             OnWigObtained?.Invoke(1f);
             _endGameCharacterModel.transform.DORotateQuaternion(Quaternion.LookRotation(Vector3.forward), 1f).OnComplete(()=> {
-                //_animationController.PlayAnimation(EEndGameCharacterAnimation.Excited);
+                _animationController.PlayAnimation(EEndGameCharacterAnimation.Excited);
             });
 
         });
 
         CoroutineRunner.Instance.WaitForSeconds(_stateDuration, () =>
         {
-            //FSM.SetTransition(ETransition.SecondWalk);
+            FSM.SetTransition(ETransition.SecondWalk);
         });
 
     }
