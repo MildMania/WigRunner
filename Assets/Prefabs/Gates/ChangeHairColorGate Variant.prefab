@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274d6ace51768fb47b85cebbd3f3167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
-  _color: {r: 0.6392157, g: 0.18823531, b: 0.3137255, a: 0}
+  _color: {r: 1, g: 0, b: 0.27388525, a: 1}
   _hairSide: 1
+  _renderer: {fileID: 537234915668459854}
+  _ps: {fileID: 1513713617799250030}
 --- !u!1001 &5610247488103657413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125,6 +126,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wr_Spray_001
       objectReference: {fileID: 0}
+    - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: ColorModule.gradient.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: ColorModule.gradient.maxColor.b
+      value: 0.27388525
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: ColorModule.gradient.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: ColorModule.gradient.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: ColorModule.gradient.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9203330546375723572, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -183,3 +204,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+--- !u!23 &537234915668459854 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8067038208432927067, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+  m_PrefabInstance: {fileID: 7532064550242152469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1513713617799250030 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+  m_PrefabInstance: {fileID: 7532064550242152469}
+  m_PrefabAsset: {fileID: 0}
