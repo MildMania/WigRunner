@@ -20045,6 +20045,7 @@ MonoBehaviour:
   _exitImmediately: 1
   _endGameCharacterObject: {fileID: 6255228373697635276}
   _animationController: {fileID: 8279387746277152963}
+  _rotateDuration: 4
 --- !u!1 &8178942889941191430
 GameObject:
   m_ObjectHideFlags: 0
