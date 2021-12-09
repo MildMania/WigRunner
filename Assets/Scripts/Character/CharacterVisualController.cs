@@ -16,7 +16,8 @@ public enum HairType
     Curly,
     Wavy,
     Dreadlock,
-    PonyTail
+    PonyTail,
+    PonyTail_2
 }
 
 
