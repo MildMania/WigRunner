@@ -52,6 +52,8 @@ public class CharacterVisualController : MonoBehaviour
 
     [SerializeField] private BaseUncollectCommand _uncollectCommand;
 
+    public GameObject AddedParticlesParent;
+
     private Dictionary<HairType, Hair> _hairByHairType = new Dictionary<HairType, Hair>();
 
     private HairType _currentHairType;
@@ -233,7 +235,7 @@ public class CharacterVisualController : MonoBehaviour
     {
         _particleCarriersByGameObject.Add(adder, particleCarrier);
 
-        particleCarrier.transform.parent = transform;
+        particleCarrier.transform.parent = AddedParticlesParent.transform;
         particleCarrier.transform.localPosition = Vector3.zero;
         particleCarrier.SetActive(true);
     }
