@@ -115,7 +115,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DirtMaskAlpha: 0
+    - _DirtMaskAlpha: 0.52399683
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -142,8 +142,8 @@ Material:
     - _DirtColor: {r: 0.4811321, g: 0.2569278, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LeftColor: {r: 1, g: 0.89543533, b: 0, a: 0}
-    - _LeftColor1: {r: 1, g: 0, b: 0.19209099, a: 1}
-    - _LeftColor2: {r: 1, g: 0, b: 0.19209099, a: 1}
+    - _LeftColor1: {r: 1, g: 0.79396963, b: 0, a: 0}
+    - _LeftColor2: {r: 1, g: 0.79396963, b: 0, a: 0}
     - _RightColor: {r: 1, g: 0, b: 0.82390785, a: 0}
     - _RightColor1: {r: 1, g: 0.79396963, b: 0, a: 0}
     - _RightColor2: {r: 1, g: 0.79396963, b: 0, a: 0}
