@@ -14812,6 +14812,36 @@ Transform:
   m_Father: {fileID: 7184936700002083617}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5746403990637512101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7679603691000710135}
+  m_Layer: 7
+  m_Name: PonyTailHairPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7679603691000710135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5746403990637512101}
+  m_LocalRotation: {x: -0.0000000055879354, y: 4.7030234e-11, z: 3.524502e-12, w: 1}
+  m_LocalPosition: {x: 0.004, y: -0.348, z: -0.122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2499784135646605083}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5914185444821728451
 GameObject:
   m_ObjectHideFlags: 0
@@ -14908,6 +14938,10 @@ MonoBehaviour:
     Pivot: {fileID: 5794982870074906084}
   - HairType: 4
     Pivot: {fileID: 5011806189806220564}
+  - HairType: 6
+    Pivot: {fileID: 7679603691000710135}
+  - HairType: 7
+    Pivot: {fileID: 4937087603296433725}
 --- !u!95 &1719334841923551620
 Animator:
   serializedVersion: 3
@@ -19921,6 +19955,36 @@ Transform:
   m_Father: {fileID: 2499784135646605083}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7127947196880147080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4937087603296433725}
+  m_Layer: 7
+  m_Name: PonyTail_2_HairPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4937087603296433725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127947196880147080}
+  m_LocalRotation: {x: -0.0000000055879354, y: 4.7030234e-11, z: 3.524502e-12, w: 1}
+  m_LocalPosition: {x: 0.004, y: -0.408, z: -0.051}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2499784135646605083}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7272742460201101823
 GameObject:
   m_ObjectHideFlags: 0
@@ -20582,11 +20646,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d250090d2b0af7449ac75df54862b13, type: 3}
---- !u!4 &2499784135646605083 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8700783698680967558, guid: 3d250090d2b0af7449ac75df54862b13, type: 3}
-  m_PrefabInstance: {fileID: 6489230497669717661}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6738750347847760246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d250090d2b0af7449ac75df54862b13, type: 3}
@@ -20595,5 +20654,10 @@ Transform:
 --- !u!1 &6255228373697635276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d250090d2b0af7449ac75df54862b13, type: 3}
+  m_PrefabInstance: {fileID: 6489230497669717661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2499784135646605083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8700783698680967558, guid: 3d250090d2b0af7449ac75df54862b13, type: 3}
   m_PrefabInstance: {fileID: 6489230497669717661}
   m_PrefabAsset: {fileID: 0}

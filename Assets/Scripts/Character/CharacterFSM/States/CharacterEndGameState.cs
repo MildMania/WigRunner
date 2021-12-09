@@ -8,6 +8,7 @@ using DG.Tweening;
 public class CharacterEndGameState : State<EState, ETransition>
 {
     [SerializeField] private TriggerObjectHitController _finishlineHitController;
+    [SerializeField] private CharacterVisualController _visualController;
 
     private void Awake()
     {
@@ -39,6 +40,8 @@ public class CharacterEndGameState : State<EState, ETransition>
         var pivot = EndGameCharacter.Instance.VisualController.GetHairPivotWithHairType(curHairType).Pivot;
 
         Vector3 attachPos = pivot.position;
+
+        _visualController.AddedParticlesParent.transform.parent = hair.HairObject.transform;
 
         var seq = DOTween.Sequence();
 
