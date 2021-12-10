@@ -41,7 +41,7 @@ public class ChangeHairTypeGate : GateBase
 
         base.OnEnteredGate();
 
-        Character.Instance.CharacterVisualController.SetDirtiness(0);
+        Character.Instance.CharacterVisualController.ResetDirtiness();
         Character.Instance.CharacterVisualController.SetHairModelActive(_hairType);
 
         _isEntered = true;

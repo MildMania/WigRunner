@@ -19,7 +19,7 @@ public class ChangeHairColorGate : GateBase
 
         print("COLOR CHANGE");
 
-        Character.Instance.CharacterVisualController.SetDirtiness(0);
+        Character.Instance.CharacterVisualController.ResetDirtiness();
         Character.Instance.CharacterVisualController.SetHairColor(_color, _hairSide);
 
         _isEntered = true;

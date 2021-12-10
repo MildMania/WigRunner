@@ -50,6 +50,8 @@ public class CharacterVisualController : MonoBehaviour
     [SerializeField] private CollectibleController _collectibleController;
 
     [SerializeField] private MMTaskExecutor _onCleanedTasks;
+    [SerializeField] private MMTaskExecutor _onAppearenceChangedTasks;
+
 
     [SerializeField] private BaseUncollectCommand _uncollectCommand;
 
@@ -83,7 +85,7 @@ public class CharacterVisualController : MonoBehaviour
 
     private void Start()
     {
-        SetHairModelActive(_initialHairType);
+        SetHairModelActive(_initialHairType, false);
         _currentHairType = _initialHairType;
 
         _hairMaterial.SetColor("_LeftColor2", _initialHairColor);
@@ -98,7 +100,7 @@ public class CharacterVisualController : MonoBehaviour
     }
 
 
-    public void SetHairModelActive(HairType hairType)
+    public void SetHairModelActive(HairType hairType, bool executeOnAppearenceChangedTasks = true)
     {
         Hair hair;
 
@@ -128,6 +130,9 @@ public class CharacterVisualController : MonoBehaviour
 
         if (_currentCosmetic != CosmeticType.None)
             EnableCosmetic(_currentCosmetic);
+
+        if(executeOnAppearenceChangedTasks)
+            _onAppearenceChangedTasks.Execute(this);
     }
 
     private void Clean()
@@ -162,6 +167,14 @@ public class CharacterVisualController : MonoBehaviour
 
          _currentDirtiness = value;
 
+        _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
+    }
+
+    public void ResetDirtiness()
+    {
+        //Clean();
+
+        _currentDirtiness = 0;
         _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
     }
 
@@ -251,7 +264,7 @@ public class CharacterVisualController : MonoBehaviour
         _particleCarriersByGameObject.Remove(adder);
     }
 
-    public void EnableCosmetic(CosmeticType cosmeticType)
+    public void EnableCosmetic(CosmeticType cosmeticType, bool executeAppearenceChangeTasks = true)
     {
         var hair = _hairByHairType[_currentHairType];
 
@@ -268,6 +281,9 @@ public class CharacterVisualController : MonoBehaviour
         }
 
         _currentCosmetic = cosmeticType;
+
+        if (executeAppearenceChangeTasks)
+            _onAppearenceChangedTasks.Execute(this);
     }
 
     public Hair GetHairWithHairType(HairType hairType)

@@ -28,7 +28,7 @@ public class EnableCosmeticGate : GateBase
 
         base.OnEnteredGate();
 
-        Character.Instance.CharacterVisualController.SetDirtiness(0);
+        Character.Instance.CharacterVisualController.ResetDirtiness();
         Character.Instance.CharacterVisualController.EnableCosmetic(_cosmeticType);
 
         _isEntered = true;
