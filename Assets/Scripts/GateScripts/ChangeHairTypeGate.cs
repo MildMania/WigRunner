@@ -17,6 +17,9 @@ public class ChangeHairTypeGate : GateBase
     [SerializeField] private Renderer _renderer;
 
 
+    [SerializeField] private Material _matGate;
+    [SerializeField] private Material _matPlain;
+
     
     private Material GetHairIconMaterial(HairType hairType)
     {
@@ -51,7 +54,10 @@ public class ChangeHairTypeGate : GateBase
     {
         var mats = _renderer.materials;
 
-        mats[2] = GetHairIconMaterial(_hairType);
+        mats[0] = _matGate;
+        mats[2] = _matPlain;
+
+        mats[1] = GetHairIconMaterial(_hairType);
 
         _renderer.materials = mats;
     }

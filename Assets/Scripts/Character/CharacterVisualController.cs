@@ -13,11 +13,12 @@ public enum HairType
     Straight,
     Straight_2,
     Straight_3,
-    Curly,
+    Afro,
     Wavy,
     Dreadlock,
     PonyTail,
-    PonyTail_2
+    PonyTail_2,
+    Thick
 }
 
 
