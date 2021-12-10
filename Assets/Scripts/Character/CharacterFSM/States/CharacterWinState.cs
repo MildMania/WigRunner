@@ -5,6 +5,8 @@ using ETransition = CharacterFSMController.ETransition;
 
 public class CharacterWinState : State<EState, ETransition>
 {
+    [SerializeField] private iOSHapticFeedback.iOSFeedbackType _successHapticFeedback = iOSHapticFeedback.iOSFeedbackType.Success;
+    private OnHapticRequestedEventRaiser _onHapticRequestedEventRaiser = new OnHapticRequestedEventRaiser();
 
     protected override EState GetStateID()
     {
@@ -15,7 +17,6 @@ public class CharacterWinState : State<EState, ETransition>
     {
         base.OnEnterCustomActions();
 
-
-
+        _onHapticRequestedEventRaiser.Raise(new OnHapticRequestedEventArgs(_successHapticFeedback));
     }
 }
