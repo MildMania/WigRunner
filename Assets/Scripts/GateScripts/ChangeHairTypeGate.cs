@@ -66,6 +66,7 @@ public class ChangeHairTypeGate : GateBase
         mats[1] = GetHairIconMaterial(_hairType);
         mats[1].SetColor("_BaseColor", _baseColor);
         mats[1].SetColor("_EmissionColor", _emissionColor);
+        mats[1].EnableKeyword("_EMISSION");
 
         _renderer.materials = mats;
     }
