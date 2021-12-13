@@ -199,6 +199,12 @@ public class CharacterVisualController : MonoBehaviour
         onColorRoutineEnded();
     }
 
+    public void SetBaseHairColor(Color newColor)
+    {
+        _hairMaterial.SetColor("_LeftColor1", newColor);
+        _hairMaterial.SetColor("_RightColor1", newColor);
+    }
+
     public void SetHairColor(Color newColor, HairSide side)
     {
         var hair = _hairByHairType[_currentHairType];
