@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274d6ace51768fb47b85cebbd3f3167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: {r: 1, g: 0, b: 0.27388525, a: 1}
+  _color: {r: 1, g: 0, b: 0.2745099, a: 1}
   _hairSide: 1
   _renderer: {fileID: 537234915668459854}
   _ps: {fileID: 1513713617799250030}
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
       propertyPath: ColorModule.gradient.maxColor.b
-      value: 0.27388525
+      value: 0.2745099
       objectReference: {fileID: 0}
     - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
       propertyPath: ColorModule.gradient.maxColor.g
@@ -176,6 +176,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9045073370347368571, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045073370348542759, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: m_SortMode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9045073370348542759, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
+      propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9203330546375723572, guid: f6187b6e9d8e58f44bdaf87d6501516e, type: 3}
