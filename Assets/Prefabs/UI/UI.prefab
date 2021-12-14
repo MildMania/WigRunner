@@ -400,6 +400,10 @@ PrefabInstance:
       propertyPath: _deactivationTransitions.Array.data[0]
       value: 
       objectReference: {fileID: 6540608258315108277}
+    - target: {fileID: 4090063112972398631, guid: ef9e21e5a24a7314cb622e81b85f78b2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4937601383719024168, guid: ef9e21e5a24a7314cb622e81b85f78b2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
