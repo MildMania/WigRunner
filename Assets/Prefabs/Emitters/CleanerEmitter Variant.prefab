@@ -18,6 +18,8 @@ MonoBehaviour:
     m_Bits: 128
   _rayLength: 5
   _thickness: 1
+  _onPlayerEnteredTasks:
+    _taskCarrier: {fileID: 870124557346337146}
   _uncollectCommand: {fileID: 11400000, guid: 22d988bf50fedc642b62fdfe76a2f00e, type: 2}
 --- !u!1001 &1724133907050773593
 PrefabInstance:
@@ -560,6 +562,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3034008929817117505, guid: 3b8006a2d6b8f04429ef2a9506946e0d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4222679211087625178, guid: 3b8006a2d6b8f04429ef2a9506946e0d, type: 3}
       propertyPath: m_Name
       value: CleanerEmitter Variant
@@ -632,5 +638,10 @@ Transform:
 --- !u!1 &4908064253422600519 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1352208948861203807, guid: 3b8006a2d6b8f04429ef2a9506946e0d, type: 3}
+  m_PrefabInstance: {fileID: 6258016324475548696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &870124557346337146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6542530813455304034, guid: 3b8006a2d6b8f04429ef2a9506946e0d, type: 3}
   m_PrefabInstance: {fileID: 6258016324475548696}
   m_PrefabAsset: {fileID: 0}

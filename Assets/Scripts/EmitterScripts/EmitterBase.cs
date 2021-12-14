@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using MMFramework.TasksV2;
+
 public class EmitterBase : MonoBehaviour
 {
     [SerializeField] private GameObject _raySource;
@@ -9,6 +11,8 @@ public class EmitterBase : MonoBehaviour
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private float _rayLength = 5f;
     [SerializeField] private float _thickness = 1f;
+
+    [SerializeField] private MMTaskExecutor _onPlayerEnteredTasks;
 
     protected bool _isCharacterEntered = false;
 
@@ -37,6 +41,7 @@ public class EmitterBase : MonoBehaviour
 
     protected virtual void OnCharacterEntered()
     {
-        print("Character Entered");
+        if (_onPlayerEnteredTasks != null)
+            _onPlayerEnteredTasks.Execute(this);
     }
 }

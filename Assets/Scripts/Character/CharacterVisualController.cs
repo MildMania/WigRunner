@@ -160,20 +160,24 @@ public class CharacterVisualController : MonoBehaviour
 
     public void SetDirtiness(float value)
     {
-        if (value == 0)
+        var val = value;
+
+        if (val <= 0)
         {
             _onCleanedTasks.Execute(this);
+
+            val = 0;
             Clean();
         }
 
-         _currentDirtiness = value;
+         _currentDirtiness = val;
 
         _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
     }
 
     public void ResetDirtiness()
     {
-        //Clean();
+        Clean();
 
         _currentDirtiness = 0;
         _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);

@@ -22,8 +22,8 @@ public class ChangeHairTypeGate : GateBase
 
     [SerializeField] private Color _baseColor;
 
-    [ColorUsage(true, true)]
-    [SerializeField] private Color _emissionColor;
+    //[ColorUsage(true, true)]
+    //[SerializeField] private Color _emissionColor;
 
     
     private Material GetHairIconMaterial(HairType hairType)
@@ -65,8 +65,9 @@ public class ChangeHairTypeGate : GateBase
 
         mats[1] = GetHairIconMaterial(_hairType);
         mats[1].SetColor("_BaseColor", _baseColor);
-        mats[1].SetColor("_EmissionColor", _emissionColor);
-        mats[1].EnableKeyword("_EMISSION");
+        
+        //mats[1].SetColor("_EmissionColor", _emissionColor);
+        //mats[1].DisableKeyword("_EMISSION");
 
         _renderer.materials = mats;
     }
