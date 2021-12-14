@@ -26,7 +26,7 @@ MonoBehaviour:
   - HairType: 6
     HairIconMaterial: {fileID: 2100000, guid: 80af513278fbb374b958672e67d7893c, type: 2}
   - HairType: 7
-    HairIconMaterial: {fileID: 2100000, guid: b9f06eb7786223e4f91c1f7f274cf24a, type: 2}
+    HairIconMaterial: {fileID: 2100000, guid: ec7ca7d7780496b4ab36f44ef00971a7, type: 2}
   - HairType: 3
     HairIconMaterial: {fileID: 2100000, guid: 88029a00edcc84245ab4d85475c0c102, type: 2}
   - HairType: 8
@@ -35,8 +35,8 @@ MonoBehaviour:
   _renderer: {fileID: 8622930955114450302}
   _matGate: {fileID: 2100000, guid: db79494cdeaad7d44a164889fe537476, type: 2}
   _matPlain: {fileID: 2100000, guid: 48886033534b3a947b9562e03482e25d, type: 2}
-  _baseColor: {r: 1, g: 1, b: 1, a: 1}
-  _emissionColor: {r: 0, g: 0, b: 0, a: 1}
+  _baseColor: {r: 0.5471698, g: 0.16724813, b: 0.32801598, a: 1}
+  _gateColor: {r: 0.54901963, g: 0.16862746, b: 0.32941177, a: 1}
 --- !u!1001 &6947747617144279546
 PrefabInstance:
   m_ObjectHideFlags: 0
