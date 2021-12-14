@@ -21,9 +21,10 @@ public class ChangeHairTypeGate : GateBase
     [SerializeField] private Material _matPlain;
 
     [SerializeField] private Color _baseColor;
+
+    [ColorUsage(true, true)]
     [SerializeField] private Color _gateColor;
 
-    //[ColorUsage(true, true)]
     //[SerializeField] private Color _emissionColor;
 
 
