@@ -200,6 +200,9 @@ public class CharacterVisualController : MonoBehaviour
             yield return null;
         }
 
+        val = 1;
+        material.SetFloat(propertyName, val);
+
         onColorRoutineEnded();
     }
 
@@ -219,6 +222,8 @@ public class CharacterVisualController : MonoBehaviour
         {
             // first set color
 
+            _hairMaterial.SetFloat("_LeftMaskAlpha", 0);
+
             _hairMaterial.SetColor("_LeftColor2", newColor);
 
             StartCoroutine(StartColorRoutine(_hairMaterial, "_LeftMaskAlpha", () => {
@@ -227,13 +232,13 @@ public class CharacterVisualController : MonoBehaviour
                 _hairMaterial.SetColor("_LeftColor1", newColor);
                 // set mask alpha 0
 
-                _hairMaterial.SetFloat("_LeftMaskAlpha", 0);
-
             }));        
 
         }
         else
         {
+            _hairMaterial.SetFloat("_RightMaskAlpha", 0);
+
             _hairMaterial.SetColor("_RightColor2", newColor);
 
             StartCoroutine(StartColorRoutine(_hairMaterial, "_RightMaskAlpha", () => {
@@ -241,8 +246,6 @@ public class CharacterVisualController : MonoBehaviour
 
                 _hairMaterial.SetColor("_RightColor1", newColor);
                 // set mask alpha 0
-
-                _hairMaterial.SetFloat("_RightMaskAlpha", 0);
 
             }));
         }
