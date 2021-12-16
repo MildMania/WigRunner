@@ -9,6 +9,6 @@ public class DirtTrack : TrackBase
         base.OnStayCustomActions();
 
         var curDirt = Character.Instance.CharacterVisualController.CurrentDirtiness;
-        Character.Instance.CharacterVisualController.SetDirtiness(curDirt + 0.001f);
+        Character.Instance.CharacterVisualController.SetDirtiness(curDirt + 0.001f, false);
     }
 }

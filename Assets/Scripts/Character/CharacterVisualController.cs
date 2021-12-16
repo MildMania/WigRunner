@@ -51,6 +51,7 @@ public class CharacterVisualController : MonoBehaviour
     [SerializeField] private CollectibleController _collectibleController;
 
     [SerializeField] private MMTaskExecutor _onCleanedTasks;
+    [SerializeField] private MMTaskExecutor _onGetDirtierTasks;
     [SerializeField] private MMTaskExecutor _onAppearenceChangedTasks;
 
 
@@ -158,7 +159,7 @@ public class CharacterVisualController : MonoBehaviour
 
 
 
-    public void SetDirtiness(float value)
+    public void SetDirtiness(float value, bool executeTasks = true)
     {
         var val = value;
 
@@ -170,7 +171,10 @@ public class CharacterVisualController : MonoBehaviour
             Clean();
         }
 
-         _currentDirtiness = val;
+        if (executeTasks && val > _currentDirtiness)
+            _onGetDirtierTasks.Execute(this);
+
+        _currentDirtiness = val;
 
         _hairMaterial.SetFloat("_DirtMaskAlpha", _currentDirtiness);
     }
